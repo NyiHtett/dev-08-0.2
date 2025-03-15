@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="s25.cs151.application.MainController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-   <DialogPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0">
-       <header>
-         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
-            <children>
-            
-                <Label fx:id="welcomeText" layoutX="135.0" layoutY="62.0" prefHeight="92.0" prefWidth="211.0" text="OfficeTracker" />
-            </children>
-         </AnchorPane>
-       </header>
-       <content>
-         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-       </content>
-       <expandableContent>
-         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-       </expandableContent>
-   </DialogPane>
-    <Button onAction="#onHelloButtonClick" text="Hello!" />
-</VBox>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Separator layoutX="1.0" layoutY="59.0" prefHeight="8.0" prefWidth="598.0" />
+      <TextField layoutX="10.0" layoutY="14.0" prefHeight="38.0" prefWidth="178.0" text="OfficeTracker" />
+      <Label layoutX="145.0" layoutY="103.0" prefHeight="78.0" prefWidth="307.0" text="OfficeTracker" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="145.0" layoutY="200.0" prefHeight="68.0" prefWidth="318.0" text="Manage &amp; schedule your office hours efficiently." wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="144.0" layoutY="307.0" mnemonicParsing="false" text="Define Office Hours" />
+      <Button layoutX="301.0" layoutY="307.0" mnemonicParsing="false" text="View Office Hours" />
+   </children>
+</Pane>
