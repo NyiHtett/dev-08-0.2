@@ -5,6 +5,6 @@
 1. Daniel Nguyen: Define Semester's Office Hours Page
 2. Omar Adrianne Bapora: General, cleaned up folder and ReadMe.txt
 3. Joshua Lai: Enabled page transition
-4. Nyi Htet: Home page
+4. Nyi Htet: Home page and creation of repo
 
 # Any other instructions that users need to know:

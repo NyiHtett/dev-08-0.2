@@ -20,9 +20,25 @@ public class DefineController {
     private ComboBox<String> semesterBox;
 
 
+    // Adds options for semester's dropdown box
     @FXML
     public void initialize() {
         // Hardcode the options for the ComboBox
         semesterBox.getItems().addAll("Summer", "Fall", "Winter");
+    }
+
+    // Directs user to home page
+    @FXML
+    protected void onCancelClick() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            definePane.getChildren().clear();
+            definePane.getChildren().add(pane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -16,6 +16,7 @@ public class MainController {
     @FXML
     Pane mainPane;
 
+    // Directs user to define office hours page
     @FXML
     protected void onDefineOfficeHoursClick() {
         try {
