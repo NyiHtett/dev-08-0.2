@@ -21,7 +21,7 @@
          </font>
       </Label>
       <Button layoutX="144.0" layoutY="307.0" mnemonicParsing="false" onAction="#onDefineOfficeHoursClick" text="Define Office Hours" />
-      <Button layoutX="301.0" layoutY="307.0" mnemonicParsing="false" text="View Office Hours" />
+      <Button layoutX="301.0" layoutY="307.0" mnemonicParsing="false" onAction="#onViewOfficeHoursClick" text="View Office Hours" />
       <Text layoutX="29.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OfficeTracker">
          <font>
             <Font size="24.0" />
