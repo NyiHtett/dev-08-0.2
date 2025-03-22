@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -30,4 +31,19 @@ public class MainController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    protected void onViewOfficeHoursClick() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-office-hours.fxml"));
+            TableView tableView = fxmlLoader.load();
+
+            Stage currentStage = (Stage) mainPane.getScene().getWindow();
+            currentStage.setScene(new Scene(tableView));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
