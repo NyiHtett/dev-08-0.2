@@ -50,11 +50,13 @@ public class DefineController {
     private void saveDataToCSV(String semester, String year, ArrayList<String> days) {
         String csvFilePath = "semester_office_hours.csv";
         try(FileWriter writer = new FileWriter(csvFilePath, true)) {
-            writer.append("\n");
-            writer.append(semester).append(',').append(year).append(',');
-            for( String day : days ) {
-                writer.append(day).append(' ');
+            // Only add newline if file is not empty
+            if (new java.io.File(csvFilePath).length() > 0) {
+                writer.append("\n");
             }
+            writer.append(semester).append(',').append(year).append(',');
+            // Join days with spaces
+            writer.append(String.join(" ", days));
             writer.flush();
             System.out.println("Done");
         }
@@ -93,29 +95,31 @@ public class DefineController {
         if(semester == null) {
             semester = "Spring";
         }
-        System.out.println(semester);
-        /**
-         * having error retrieving year from yearField
-         * thus hardcoded the year as 2003
-         */
-        //System.out.println(yearField.getText());
+
+        String year = yearField.getText();
+
         ArrayList<String> days = new ArrayList<>();
-        if(wed.isSelected()) {
-            days.add("Wednesday");
+        if(mon.isSelected()) {
+            days.add("Monday");
         }
         if(tue.isSelected()) {
             days.add("Tuesday");
         }
-        if(mon.isSelected()) {
-            days.add("Monday");
-        }
-        if(fri.isSelected()) {
-            days.add("Friday");
+        if(wed.isSelected()) {
+            days.add("Wednesday");
         }
         if(thu.isSelected()) {
             days.add("Thursday");
         }
-        saveDataToCSV(semester, "2003", days);
+        if(fri.isSelected()) {
+            days.add("Friday");
+        }
+
+        
+        saveDataToCSV(semester, year, days);
+        
+        // Optionally, return to home page after saving
+        onCancelClick();
     }
 
 }
