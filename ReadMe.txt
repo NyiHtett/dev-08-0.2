@@ -2,10 +2,13 @@
 # Version: 0.4
 
 # Who did what:
-1. Daniel Nguyen: General, storing/sorting data of user input
-2. Omar Adrianne Bapora: Storing/sorting data of user input, return to home page from office hours page function
-3. Joshua Lai: Page transition to view office hours, view-office-hours page
-4. Nyi Htet: Saving data of user input to csv
+1. Daniel Nguyen: General, sorting "View Office Hours" page output, fixed duplicates
+2. Omar Adrianne Bapora: Fetch CSV data for the "View Office Hours" page output, sorting output
+3. Joshua Lai: Page transition to view office hours, "View Office Hours" page
+4. Nyi Htet: General, storing user data in CSV
+
+
+Message #general
 
 # Any other instructions that users need to know:
 
