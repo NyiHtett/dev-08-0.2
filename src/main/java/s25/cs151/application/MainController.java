@@ -35,12 +35,8 @@ public class MainController {
     @FXML
     protected void onViewOfficeHoursClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-office-hours.fxml"));
-            TableView tableView = fxmlLoader.load();
-
-            Stage currentStage = (Stage) mainPane.getScene().getWindow();
-            currentStage.setScene(new Scene(tableView));
-
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(FXMLLoader.load(Main.class.getResource("view-office-hours.fxml")));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

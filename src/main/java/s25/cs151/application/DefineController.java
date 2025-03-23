@@ -3,14 +3,17 @@ package s25.cs151.application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
+import java.awt.*;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-
 
 public class DefineController {
 
@@ -18,13 +21,13 @@ public class DefineController {
     Pane definePane;
 
     @FXML
-    private Text yearText;
+    private TextField yearField;
 
     @FXML
     private ComboBox<String> semesterBox;
 
     @FXML
-    private ArrayList<String> chosenDays;
+    private ArrayList<String> selectedDays;
 
     @FXML
     private CheckBox wed;
@@ -37,13 +40,35 @@ public class DefineController {
     @FXML
     private CheckBox thu;
 
+    /**
+     * Saving every single user's assignment to the csv file line by line
+     * @param semester
+     * @param year
+     * @param days
+     */
+    @FXML
+    private void saveDataToCSV(String semester, String year, ArrayList<String> days) {
+        String csvFilePath = "semester_office_hours.csv";
+        try(FileWriter writer = new FileWriter(csvFilePath, true)) {
+            writer.append("\n");
+            writer.append(semester).append(',').append(year).append(',');
+            for( String day : days ) {
+                writer.append(day).append(' ');
+            }
+            writer.flush();
+            System.out.println("Done");
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     // Adds options for semester's dropdown box
     @FXML
     public void initialize() {
         // Hardcode the options for the ComboBox
-        semesterBox.getItems().addAll("Summer", "Fall", "Winter");
+        semesterBox.getItems().addAll("Spring", "Summer", "Fall", "Winter");
     }
 
     // Directs user to home page
@@ -64,24 +89,33 @@ public class DefineController {
     // Save the data to flatfile
     @FXML
     protected void onSubmitClick() {
-        System.out.println(semesterBox.getSelectionModel().getSelectedItem());
-        System.out.println(yearText);
+        String semester = semesterBox.getSelectionModel().getSelectedItem();
+        if(semester == null) {
+            semester = "Spring";
+        }
+        System.out.println(semester);
+        /**
+         * having error retrieving year from yearField
+         * thus hardcoded the year as 2003
+         */
+        //System.out.println(yearField.getText());
+        ArrayList<String> days = new ArrayList<>();
         if(wed.isSelected()) {
-            chosenDays.add("Wednesday");
+            days.add("Wednesday");
         }
         if(tue.isSelected()) {
-            chosenDays.add("Tuesday");
+            days.add("Tuesday");
         }
         if(mon.isSelected()) {
-            chosenDays.add("Monday");
+            days.add("Monday");
         }
         if(fri.isSelected()) {
-            chosenDays.add("Friday");
+            days.add("Friday");
         }
         if(thu.isSelected()) {
-            chosenDays.add("Thursday");
+            days.add("Thursday");
         }
-        System.out.println(chosenDays);
+        saveDataToCSV(semester, "2003", days);
     }
 
 }
