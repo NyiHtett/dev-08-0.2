@@ -32,13 +32,18 @@ public class MainController {
         }
     }
 
+    // Directs user to view office hours page
     @FXML
     protected void onViewOfficeHoursClick() {
         try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-office-hours.fxml"));
+            Pane pane = fxmlLoader.load();
+
             mainPane.getChildren().clear();
-            mainPane.getChildren().add(FXMLLoader.load(Main.class.getResource("view-office-hours.fxml")));
+            mainPane.getChildren().add(pane);
+
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 

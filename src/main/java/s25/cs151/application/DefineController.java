@@ -1,21 +1,27 @@
 package s25.cs151.application;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 
 import java.awt.*;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
 
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
-public class DefineController {
+public class DefineController  {
 
     @FXML
     Pane definePane;
@@ -48,21 +54,51 @@ public class DefineController {
      */
     @FXML
     private void saveDataToCSV(String semester, String year, ArrayList<String> days) {
+
         String csvFilePath = "semester_office_hours.csv";
-        try(FileWriter writer = new FileWriter(csvFilePath, true)) {
-            // Only add newline if file is not empty
-            if (new java.io.File(csvFilePath).length() > 0) {
-                writer.append("\n");
+
+boolean isDuplicate = false;
+
+        try {
+            File file = new File("semester_office_hours.csv");
+            Scanner sc = new Scanner(file);
+            String line = "";
+            ObservableList<TableViewController.OfficeHour> data = FXCollections.observableArrayList();
+
+            sc.nextLine();
+            while (sc.hasNextLine()) {
+                line = sc.nextLine();
+                String[] elements = line.split(",");
+                    if (elements.length >= 2 && 
+                        elements[0].trim().equals(semester) && 
+                        elements[1].trim().equals(year)) {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
             }
-            writer.append(semester).append(',').append(year).append(',');
-            // Join days with spaces
-            writer.append(String.join(" ", days));
-            writer.flush();
-            System.out.println("Done");
+
+        if (isDuplicate) {
+            System.out.println("Duplicate semester and year found - cannot add");
+            return;
         }
-        catch(IOException e) {
-            e.printStackTrace();
-        }
+
+       try(FileWriter writer = new FileWriter(csvFilePath, true)) {
+           // Only add newline if file is not empty
+           if (new java.io.File(csvFilePath).length() > 0) {
+               writer.append("\n");
+           }
+           writer.append(semester).append(',').append(year).append(',');
+           // Join days with spaces
+           writer.append(String.join(" ", days));
+           writer.flush();
+           System.out.println("Done");
+       }
+       catch(IOException e) {
+           e.printStackTrace();
+       }
     }
 
 

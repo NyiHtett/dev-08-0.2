@@ -101,9 +101,9 @@ public class TableViewController {
             while (sc.hasNextLine()) {
                 line = sc.nextLine();
                 elements = line.split(",");
-                int yr = Integer.parseInt(elements[1]);
-                OfficeHour hr = new OfficeHour(elements[0], yr, elements[2]);
-                data.add(new OfficeHour(hr.getSemester(), hr.getYear(), hr.getWeekdays()));
+
+                OfficeHour ohr = new OfficeHour(elements[0], Integer.parseInt(elements[1]), elements[2]);
+                data.add(new OfficeHour(ohr.getSemester(), ohr.getYear(), ohr.getWeekdays()));
             }
 
             // Set up columns
