@@ -27,5 +27,6 @@
             <Font size="24.0" />
          </font>
       </Text>
+      <Button layoutX="452.0" layoutY="307.0" mnemonicParsing="false" text="Button" />
    </children>
 </Pane>
