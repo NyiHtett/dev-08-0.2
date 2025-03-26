@@ -57,7 +57,7 @@ public class DefineController  {
 
         String csvFilePath = "semester_office_hours.csv";
 
-boolean isDuplicate = false;
+        boolean isDuplicate = false;
 
         try {
             File file = new File("semester_office_hours.csv");
@@ -153,9 +153,17 @@ boolean isDuplicate = false;
 
         
         saveDataToCSV(semester, year, days);
-        
-        // Optionally, return to home page after saving
-        onCancelClick();
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("define-time-slots.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            definePane.getChildren().clear();
+            definePane.getChildren().add(pane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
