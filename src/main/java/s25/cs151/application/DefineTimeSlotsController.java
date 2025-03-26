@@ -39,7 +39,7 @@ public class DefineTimeSlotsController {
         this.saveTimeSlot();
         timeSlotPane.getChildren().clear();
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("define-office-hours.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("course.fxml"));
             Pane pane = fxmlLoader.load();
             timeSlotPane.getChildren().add(pane);
         } catch (Exception e) {
