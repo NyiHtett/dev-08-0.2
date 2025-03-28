@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -124,15 +125,39 @@ public class DefineController  {
         }
     }
 
+    // Validates if year entered is a four digit integer.
+    @FXML
+    private boolean validateYear(String input){
+        if(input.length() == 4){
+            for(int i = 0; i < input.length(); i++){
+                if(!Character.isDigit(input.charAt(i))){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     // Save the data to flatfile
     @FXML
     protected void onSubmitClick() {
         String semester = semesterBox.getSelectionModel().getSelectedItem();
+
         if(semester == null) {
             semester = "Spring";
         }
 
         String year = yearField.getText();
+
+        if(!validateYear(year)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Year");
+            alert.setHeaderText(null);
+            alert.setContentText("Year must be a 4 digit number.");
+            alert.showAndWait();
+            return;
+        }
 
         ArrayList<String> days = new ArrayList<>();
         if(mon.isSelected()) {
@@ -151,7 +176,15 @@ public class DefineController  {
             days.add("Friday");
         }
 
-        
+        if(days.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Days");
+            alert.setHeaderText(null);
+            alert.setContentText("Select at least one day.");
+            alert.showAndWait();
+            return;
+        }
+
         saveDataToCSV(semester, year, days);
 
         try {
