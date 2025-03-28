@@ -7,9 +7,6 @@
 3. Joshua Lai: Page transition to view office hours, "View Office Hours" page
 4. Nyi Htet: General, storing user data in CSV
 
-
-Message #general
-
 # Any other instructions that users need to know:
 
 Previous Versions:
