@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="timeSlotsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.TableViewController">
+    <children>
+        <TableView fx:id="timeSlotsTableView" layoutY="-1.0" prefHeight="360.0" prefWidth="600.0">
+            <columns>
+                <TableColumn fx:id="fromHour" prefWidth="305.0" sortType="DESCENDING" text="From Hour:" />
+                <TableColumn fx:id="toHour" prefWidth="294.0" sortType="DESCENDING" text="To Hour:" />
+            </columns>
+        </TableView>
+        <Button layoutX="275.0" layoutY="366.0" mnemonicParsing="false" onAction="#onExitClick" prefHeight="26.0" prefWidth="50.0" text="Exit" />
+    </children>
+</AnchorPane>
