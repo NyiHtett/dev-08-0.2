@@ -1,5 +1,6 @@
 package s25.cs151.application;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -35,6 +36,62 @@ public class MainController {
     // Directs user to view office hours page
     @FXML
     protected void onViewOfficeHoursClick() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-office-hours.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(pane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void onDefineTimeSlotsClick(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("define-time-slots.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(pane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void onViewTimeSlotsClick(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-office-hours.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(pane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void onDefineCoursesClick(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("course.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(pane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void onViewCoursesClick(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-office-hours.fxml"));
             Pane pane = fxmlLoader.load();

@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.layout.Pane;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,20 +17,35 @@ public class DefineTimeSlotsController {
     private Button coursePage;
 
     @FXML
-    private DatePicker endTime;
-
-    @FXML
     private Button previousPage;
 
     @FXML
-    private DatePicker startTime;
+    private Spinner<Integer> endTimeHour;
 
-    public LocalDate getStartTime() {
-        return startTime.getValue();
+    @FXML
+    private Spinner<Integer> endTimeMinute;
+
+    @FXML
+    private Spinner<Integer> startTimeHour;
+
+    @FXML
+    private Spinner<Integer> startTimeMinute;
+
+    public String getStartTime() {
+        return startTimeHour.getValue() + ":" + startTimeMinute.getValue();
     }
 
-    public LocalDate getEndTime() {
-        return endTime.getValue();
+    public String getEndTime() {
+        return endTimeHour.getValue() + ":" + endTimeMinute.getValue();
+    }
+
+    @FXML
+    public void initialize() {
+        startTimeHour.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 9));
+        startTimeMinute.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
+
+        endTimeHour.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 23, 16));
+        endTimeMinute.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 59, 0));
     }
 
     @FXML
@@ -38,7 +55,7 @@ public class DefineTimeSlotsController {
     protected void onCoursePageClick() {
         this.saveTimeSlot();
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("course.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
             Pane pane = fxmlLoader.load();
             timeSlotPane.getChildren().clear();
             timeSlotPane.getChildren().add(pane);
@@ -50,7 +67,7 @@ public class DefineTimeSlotsController {
     @FXML
     protected void onPreviousPageClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("define-office-hours.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
             Pane pane = fxmlLoader.load();
             timeSlotPane.getChildren().clear();
             timeSlotPane.getChildren().add(pane);
@@ -60,10 +77,12 @@ public class DefineTimeSlotsController {
     }
 
     protected void saveTimeSlot() {
-        String csvFilePath = "semester_office_hours.csv";
+        String csvFilePath = "time_slots.csv";
         try(FileWriter writer = new FileWriter(csvFilePath, true)) {
-            writer.append(",");
-            writer.append(this.getStartTime().toString()).append(',').append(this.getEndTime().toString()).append(',');
+            if (new java.io.File(csvFilePath).length() > 0) {
+                writer.append("\n");
+            }
+            writer.append(getStartTime()).append(',').append(getEndTime()).append('\n');
             writer.flush();
             System.out.println("Done for the time slot");
         }
@@ -71,6 +90,7 @@ public class DefineTimeSlotsController {
             e.printStackTrace();
         }
     }
+
 
 
 }

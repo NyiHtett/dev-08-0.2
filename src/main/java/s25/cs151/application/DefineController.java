@@ -188,7 +188,7 @@ public class DefineController  {
         saveDataToCSV(semester, year, days);
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("define-time-slots.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
             Pane pane = fxmlLoader.load();
 
             definePane.getChildren().clear();
