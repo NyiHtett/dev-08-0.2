@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="coursesPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.CoursesTableViewController">
+   <children>
+      <TableView fx:id="table" layoutY="-1.0" prefHeight="360.0" prefWidth="600.0">
+         <columns>
+            <TableColumn fx:id="courseCode" prefWidth="150.0" sortType="DESCENDING" text="Course Code" />
+            <TableColumn fx:id="courseName" prefWidth="300.0" sortType="DESCENDING" text="Course Name" />
+            <TableColumn fx:id="sectionNumber" prefWidth="150.0" text="Section Number" />
+         </columns>
+      </TableView>
+      <Button layoutX="275.0" layoutY="366.0" mnemonicParsing="false" onAction="#onExitClick" prefHeight="26.0" prefWidth="50.0" text="Exit" />
+   </children>
+</AnchorPane>
