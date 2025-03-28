@@ -37,10 +37,10 @@ public class DefineTimeSlotsController {
     @FXML
     protected void onCoursePageClick() {
         this.saveTimeSlot();
-        timeSlotPane.getChildren().clear();
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("course.fxml"));
             Pane pane = fxmlLoader.load();
+            timeSlotPane.getChildren().clear();
             timeSlotPane.getChildren().add(pane);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -49,7 +49,14 @@ public class DefineTimeSlotsController {
 
     @FXML
     protected void onPreviousPageClick() {
-
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("define-office-hours.fxml"));
+            Pane pane = fxmlLoader.load();
+            timeSlotPane.getChildren().clear();
+            timeSlotPane.getChildren().add(pane);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     protected void saveTimeSlot() {
