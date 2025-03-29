@@ -1,31 +1,37 @@
 package s25.cs151.application;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Scanner;
 
 public class CoursesTableViewController {
     @FXML
     private AnchorPane coursesPane;
 
     @FXML
-    private TableView<CoursesTableViewController.Courses> table;
+    private TableView<Courses> table;
 
     @FXML
-    private TableColumn<CoursesTableViewController.Courses, String> courseCode;
+    private TableColumn<Courses, String> courseCode;
 
     @FXML
-    private TableColumn<CoursesTableViewController.Courses, String> courseName;
+    private TableColumn<Courses, String> courseName;
 
     @FXML
-    private TableColumn<CoursesTableViewController.Courses, Integer> courseNumber;
+    private TableColumn<Courses, Integer> sectionNumber;
 
-    public static class Courses implements Comparable<CoursesTableViewController.Courses> {
+    public static class Courses implements Comparable<Courses> {
         private String courseCode;
         private String courseName;
         private int courseNumber;
@@ -49,7 +55,7 @@ public class CoursesTableViewController {
         }
 
         @Override
-        public int compareTo(CoursesTableViewController.Courses other) {
+        public int compareTo(Courses other) {
             if (this.courseCode.compareTo(other.courseCode) < 0) {
                 return 1;
             } else if (this.courseCode.compareTo(other.courseCode) > 0) {
@@ -59,6 +65,37 @@ public class CoursesTableViewController {
             }
         }
 
+    }
+
+    @FXML
+    public void initialize() {
+        try {
+            File file = new File("courses.csv");
+            Scanner sc = new Scanner(file);
+
+            String line = "";
+            String[] elements;
+            ObservableList<Courses> data = FXCollections.observableArrayList();
+
+            sc.nextLine();
+            while (sc.hasNextLine()) {
+                line = sc.nextLine();
+                elements = line.split(",");
+
+                Courses course = new Courses(elements[0], elements[1], Integer.parseInt(elements[2]));
+                data.add(course);
+            }
+
+            // Set up columns
+            courseCode.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
+            courseName.setCellValueFactory(new PropertyValueFactory<>("courseName"));
+            sectionNumber.setCellValueFactory(new PropertyValueFactory<>("courseNumber"));
+
+            Collections.sort(data);
+            table.setItems(data);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @FXML
