@@ -1,4 +1,3 @@
 CourseCode,CourseName,SectionNumber
 CS-122,Advance Programming Python,02
-CS-151,Object-Oriented Design,04
-MATH-39,Linear Algebra,03
+cs151,oop,2

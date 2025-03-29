@@ -2,10 +2,7 @@ package s25.cs151.application;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -78,6 +75,16 @@ public class DefineTimeSlotsController {
     }
 
     protected void saveTimeSlot() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        if( startTimeHour.getValue() > endTimeHour.getValue()){
+            alert.setContentText("Start time must be before end time.");
+            alert.showAndWait();
+            return;
+        } else if (startTimeHour.getValue().intValue() == endTimeHour.getValue().intValue() && startTimeMinute.getValue() > endTimeMinute.getValue()){
+            alert.setContentText("Start time must be before end time.");
+            alert.showAndWait();
+            return;
+        }
         String csvFilePath = "time_slots.csv";
         try(FileWriter writer = new FileWriter(csvFilePath, true)) {
 //            if (new java.io.File(csvFilePath).length() > 0) {
