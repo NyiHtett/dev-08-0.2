@@ -32,11 +32,12 @@ public class DefineTimeSlotsController {
     private Spinner<Integer> startTimeMinute;
 
     public String getStartTime() {
-        return startTimeHour.getValue() + ":" + startTimeMinute.getValue();
+        // Add leading zero
+        return String.format("%02d:%02d", startTimeHour.getValue(), startTimeMinute.getValue());
     }
 
     public String getEndTime() {
-        return endTimeHour.getValue() + ":" + endTimeMinute.getValue();
+        return String.format("%02d:%02d", endTimeHour.getValue(), endTimeMinute.getValue());
     }
 
     @FXML
