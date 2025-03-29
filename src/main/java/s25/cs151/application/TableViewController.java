@@ -93,6 +93,7 @@ public class TableViewController {
         try {
             File file = new File("semester_office_hours.csv");
             Scanner sc = new Scanner(file);
+
             String line = "";
             String[] elements;
             ObservableList<OfficeHour> data = FXCollections.observableArrayList();
@@ -103,7 +104,7 @@ public class TableViewController {
                 elements = line.split(",");
 
                 OfficeHour ohr = new OfficeHour(elements[0], Integer.parseInt(elements[1]), elements[2]);
-                data.add(new OfficeHour(ohr.getSemester(), ohr.getYear(), ohr.getWeekdays()));
+                data.add(ohr);
             }
 
             // Set up columns

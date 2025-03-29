@@ -64,14 +64,13 @@ public class DefineController  {
             File file = new File("semester_office_hours.csv");
             Scanner sc = new Scanner(file);
             String line = "";
-            ObservableList<TableViewController.OfficeHour> data = FXCollections.observableArrayList();
 
             sc.nextLine();
             while (sc.hasNextLine()) {
                 line = sc.nextLine();
                 String[] elements = line.split(",");
-                    if (elements.length >= 2 && 
-                        elements[0].trim().equals(semester) && 
+                    if (elements.length >= 2 &&
+                        elements[0].trim().equals(semester) &&
                         elements[1].trim().equals(year)) {
                         isDuplicate = true;
                         break;

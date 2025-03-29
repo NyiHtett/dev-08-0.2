@@ -65,7 +65,7 @@ public class MainController {
     @FXML
     void onViewTimeSlotsClick(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-office-hours.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-semester-time-slots.fxml"));
             Pane pane = fxmlLoader.load();
 
             mainPane.getChildren().clear();
@@ -93,7 +93,7 @@ public class MainController {
     @FXML
     void onViewCoursesClick(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-office-hours.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-courses.fxml"));
             Pane pane = fxmlLoader.load();
 
             mainPane.getChildren().clear();

@@ -79,9 +79,9 @@ public class DefineTimeSlotsController {
     protected void saveTimeSlot() {
         String csvFilePath = "time_slots.csv";
         try(FileWriter writer = new FileWriter(csvFilePath, true)) {
-            if (new java.io.File(csvFilePath).length() > 0) {
-                writer.append("\n");
-            }
+//            if (new java.io.File(csvFilePath).length() > 0) {
+//                writer.append("\n");
+//            }
             writer.append(getStartTime()).append(',').append(getEndTime()).append('\n');
             writer.flush();
             System.out.println("Done for the time slot");
