@@ -37,7 +37,7 @@ public class MainController {
     @FXML
     protected void onViewOfficeHoursClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-courses.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-office-hours.fxml"));
             Pane pane = fxmlLoader.load();
 
             mainPane.getChildren().clear();
