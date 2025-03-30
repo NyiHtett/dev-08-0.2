@@ -126,6 +126,9 @@ public class DefineCourseController {
         }
 
         if (isDuplicate) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Duplicate course code, course name, and section.");
+            alert.showAndWait();
             System.out.println("Duplicate Course Code, Course Name, and Section - cannot add");
             return;
         }

@@ -31,5 +31,15 @@
       <Spinner fx:id="startTimeMinute" layoutX="421.0" layoutY="139.0" prefHeight="26.0" prefWidth="112.0" />
       <Spinner fx:id="endTimeHour" layoutX="292.0" layoutY="200.0" prefHeight="26.0" prefWidth="112.0" />
       <Spinner fx:id="endTimeMinute" layoutX="421.0" layoutY="200.0" prefHeight="26.0" prefWidth="112.0" />
+      <Text layoutX="328.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hour">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="451.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minute">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
    </children>
 </Pane>
