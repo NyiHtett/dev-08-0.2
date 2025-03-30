@@ -69,36 +69,37 @@ public class DefineController  {
             while (sc.hasNextLine()) {
                 line = sc.nextLine();
                 String[] elements = line.split(",");
-                    if (elements.length >= 2 &&
+                if (elements.length >= 2 &&
                         elements[0].trim().equals(semester) &&
                         elements[1].trim().equals(year)) {
-                        isDuplicate = true;
-                        break;
-                    }
+                    isDuplicate = true;
+                    break;
                 }
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
             }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
 
         if (isDuplicate) {
             System.out.println("Duplicate semester and year found - cannot add");
             return;
         }
 
-       try(FileWriter writer = new FileWriter(csvFilePath, true)) {
-           // Only add newline if file is not empty
-           if (new java.io.File(csvFilePath).length() > 0) {
-               writer.append("\n");
-           }
-           writer.append(semester).append(',').append(year).append(',');
-           // Join days with spaces
-           writer.append(String.join(" ", days));
-           writer.flush();
-           System.out.println("Done");
-       }
-       catch(IOException e) {
-           e.printStackTrace();
-       }
+        try(FileWriter writer = new FileWriter(csvFilePath, true)) {
+            // Only add newline if file is not empty
+//            if (new java.io.File(csvFilePath).length() > 0) {
+//                writer.append("\n");
+//            }
+            writer.append(semester).append(',').append(year).append(',');
+            // Join days with spaces
+            writer.append(String.join(" ", days));
+            writer.append('\n');
+            writer.flush();
+            System.out.println("Done");
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
