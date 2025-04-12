@@ -1,6 +1,5 @@
 package s25.cs151.application.controller;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,94 +8,39 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import s25.cs151.application.CommonObjects;
+import s25.cs151.application.Course;
 import s25.cs151.application.Main;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Scanner;
 
 public class CoursesTableViewController {
     @FXML
     private AnchorPane coursesPane;
 
     @FXML
-    private TableView<Courses> table;
+    private TableView<Course> table;
 
     @FXML
-    private TableColumn<Courses, String> courseCode;
+    private TableColumn<Course, String> courseCode;
 
     @FXML
-    private TableColumn<Courses, String> courseName;
+    private TableColumn<Course, String> courseName;
 
     @FXML
-    private TableColumn<Courses, Integer> sectionNumber;
-
-    public static class Courses implements Comparable<Courses> {
-        private String courseCode;
-        private String courseName;
-        private int courseNumber;
-
-        public Courses(String courseCode, String courseName, int courseNumber) {
-            this.courseCode = courseCode;
-            this.courseName = courseName;
-            this.courseNumber = courseNumber;
-        }
-
-        public String getCourseCode() {
-            return this.courseCode;
-        }
-
-        public String getCourseName() {
-            return this.courseName;
-        }
-
-        public int getCourseNumber() {
-            return this.courseNumber;
-        }
-
-        @Override
-        public int compareTo(Courses other) {
-            if (this.courseCode.compareTo(other.courseCode) < 0) {
-                return 1;
-            } else if (this.courseCode.compareTo(other.courseCode) > 0) {
-                return -1;
-            } else {
-                return 0;
-            }
-        }
-
-    }
+    private TableColumn<Course, Integer> sectionNumber;
 
     @FXML
     public void initialize() {
-        try {
-            File file = new File("courses.csv");
-            Scanner sc = new Scanner(file);
+        CommonObjects commonObject = CommonObjects.getInstance();
+        ObservableList<Course> courseCSVList = commonObject.getCourseCSVList();
 
-            String line = "";
-            String[] elements;
-            ObservableList<Courses> data = FXCollections.observableArrayList();
+        // Set up columns
+        courseCode.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
+        courseName.setCellValueFactory(new PropertyValueFactory<>("courseName"));
+        sectionNumber.setCellValueFactory(new PropertyValueFactory<>("courseNumber"));
 
-            sc.nextLine();
-            while (sc.hasNextLine()) {
-                line = sc.nextLine();
-                elements = line.split(",");
-
-                Courses course = new Courses(elements[0], elements[1], Integer.parseInt(elements[2]));
-                data.add(course);
-            }
-
-            // Set up columns
-            courseCode.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
-            courseName.setCellValueFactory(new PropertyValueFactory<>("courseName"));
-            sectionNumber.setCellValueFactory(new PropertyValueFactory<>("courseNumber"));
-
-            Collections.sort(data);
-            table.setItems(data);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        table.setItems(courseCSVList);
     }
 
     @FXML

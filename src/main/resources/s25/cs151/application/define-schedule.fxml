@@ -25,7 +25,7 @@
       </Label>
       <TextField fx:id="nameField" layoutX="331.0" layoutY="82.0" prefHeight="26.0" prefWidth="186.0" />
       <DatePicker fx:id="datePicker" layoutX="331.0" layoutY="132.0" />
-      <Label layoutX="69.0" layoutY="139.0" text="Schedule Date">
+      <Label layoutX="68.0" layoutY="134.0" text="Schedule Date">
          <font>
             <Font size="18.0" />
          </font>
