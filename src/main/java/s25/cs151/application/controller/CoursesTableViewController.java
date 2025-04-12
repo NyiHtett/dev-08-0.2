@@ -1,4 +1,4 @@
-package s25.cs151.application;
+package s25.cs151.application.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import s25.cs151.application.Main;
 
 import java.io.File;
 import java.io.IOException;

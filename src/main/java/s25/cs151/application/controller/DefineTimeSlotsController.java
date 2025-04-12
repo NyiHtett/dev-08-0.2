@@ -1,12 +1,13 @@
-package s25.cs151.application;
+package s25.cs151.application.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import s25.cs151.application.Main;
+
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class DefineTimeSlotsController {
 
