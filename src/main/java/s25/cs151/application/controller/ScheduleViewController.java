@@ -29,6 +29,15 @@ public class ScheduleViewController {
     public TableColumn timeSlot;
 
     @FXML
+    public TableColumn studentName;
+
+    @FXML
+    public TableColumn reason;
+
+    @FXML
+    public TableColumn comment;
+
+    @FXML
     public void initialize() {
 
         CommonObjects commonObject = CommonObjects.getInstance();
@@ -37,6 +46,9 @@ public class ScheduleViewController {
         // Set up columns
         scheduleDate.setCellValueFactory(new PropertyValueFactory<>("scheduleDate"));
         timeSlot.setCellValueFactory(new PropertyValueFactory<>("timeSlot"));
+        studentName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
+        reason.setCellValueFactory(new PropertyValueFactory<>("reason"));
+        comment.setCellValueFactory(new PropertyValueFactory<>("comment"));
 
         table.setItems(scheduleCSVList);
     }

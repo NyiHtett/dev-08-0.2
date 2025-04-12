@@ -9,8 +9,11 @@
    <children>
       <TableView fx:id="table" layoutY="-1.0" prefHeight="360.0" prefWidth="600.0">
          <columns>
-            <TableColumn fx:id="scheduleDate" prefWidth="300.0" sortType="DESCENDING" text="Schedule Date" />
-            <TableColumn fx:id="timeSlot" prefWidth="300.0" sortType="DESCENDING" text="Time Slot" />
+            <TableColumn fx:id="scheduleDate" prefWidth="120.0" sortType="DESCENDING" text="Schedule Date" />
+            <TableColumn fx:id="timeSlot" prefWidth="120.0" sortType="DESCENDING" text="Time Slot" />
+            <TableColumn fx:id="studentName" prefWidth="120.0" sortType="DESCENDING" text="Student" />
+            <TableColumn fx:id="reason" prefWidth="120.0" sortType="DESCENDING" text="Reason" />
+            <TableColumn fx:id="comment" prefWidth="120.0" sortType="DESCENDING" text="Comment" />
          </columns>
       </TableView>
       <Button layoutX="275.0" layoutY="366.0" mnemonicParsing="false" onAction="#onExitClick" prefHeight="26.0" prefWidth="50.0" text="Exit" />
