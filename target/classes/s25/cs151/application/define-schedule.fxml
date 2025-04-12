@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="schedulePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.controller.DefineScheduleController">
+   <children>
+      <Label layoutX="54.0" layoutY="25.0" text="Define Office Hourse Schedule">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Separator layoutY="70.0" prefHeight="3.0" prefWidth="600.0" />
+      <Label layoutX="69.0" layoutY="90.0" text="Student's Full Name">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="332.0" layoutY="88.0" prefHeight="26.0" prefWidth="186.0" />
+      <DatePicker layoutX="332.0" layoutY="138.0" />
+      <Label layoutX="69.0" layoutY="139.0" text="Schedule Date">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="332.0" layoutY="188.0" prefHeight="26.0" prefWidth="186.0" />
+      <Label layoutX="69.0" layoutY="189.0" text="Time Slot">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="232.0" text="Course">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="332.0" layoutY="231.0" prefHeight="26.0" prefWidth="186.0" />
+      <Label layoutX="68.0" layoutY="293.0" text="Reason">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="67.0" layoutY="353.0" text="Comment">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="184.0" layoutY="285.0" prefHeight="39.0" prefWidth="351.0" />
+      <TextArea layoutX="184.0" layoutY="344.0" prefHeight="41.0" prefWidth="351.0" />
+   </children>
+</AnchorPane>

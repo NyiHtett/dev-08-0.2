@@ -1,4 +1,4 @@
-package s25.cs151.application;
+package s25.cs151.application.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
