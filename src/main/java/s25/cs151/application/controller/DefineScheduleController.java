@@ -79,13 +79,6 @@ public class DefineScheduleController {
 
     @FXML
     public void onSubmitClick(ActionEvent actionEvent) {
-        if(reasonTextArea.getText().isEmpty()) {
-            reasonTextArea.appendText("None");
-        }
-
-        if(commentTextArea.getText().isEmpty()) {
-            commentTextArea.appendText("None");
-        }
 
         if(nameField.getText().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -102,6 +95,14 @@ public class DefineScheduleController {
         String course = (String) courseBox.getValue();
         String reason = reasonTextArea.getText();
         String comment = commentTextArea.getText();
+
+        if(reasonTextArea.getText().isEmpty()) {
+            reason = "None.";
+        }
+
+        if(commentTextArea.getText().isEmpty()) {
+            comment = "None.";
+        }
 
         System.out.println(studentName);
         System.out.println(date);
