@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import s25.cs151.application.*;
@@ -82,6 +79,23 @@ public class DefineScheduleController {
 
     @FXML
     public void onSubmitClick(ActionEvent actionEvent) {
+        if(reasonTextArea.getText().isEmpty()) {
+            reasonTextArea.appendText("None");
+        }
+
+        if(commentTextArea.getText().isEmpty()) {
+            commentTextArea.appendText("None");
+        }
+
+        if(nameField.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Invalid Schedule");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter in all required fields (Name, Date, Time Slot, Course)");
+            alert.showAndWait();
+            return;
+        }
+
         String studentName = nameField.getText();
         LocalDate date = datePicker.getValue(); // Returns a LocalDate Object
         String timeSlot = (String) timeSlotBox.getValue();
