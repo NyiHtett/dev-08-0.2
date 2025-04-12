@@ -1,4 +1,6 @@
 StudentName,ScheduleDate,TimeSlot,Course,Reason,Comment
 Omar Adrianne Bapora,2025-04-14,13:15 - 14:15,Object-Oriented Design,Exam question.,None.
-Daniel Nguyen,2025-04-16,09:05 - 16:05,Intro to Data Structures and Algorithms,Quiz question.,Hello!
-Joshua Lai,2025-04-15,09:05  - 16:05,Advance Python Programming,HW help.,None.
+Daniel Nguyen,2025-04-14,09:05 - 16:05,Intro to Data Structures and Algorithms,Lab help.,None.
+Joshua Lai,2025-04-14,13:15 - 14:00,Object-Oriented Design,Quiz help.,None.
+Nyi Htet,2025-04-12,16:10 - 17:10,Object-Oriented Design,Project help.,None.
+Sleepy Joe,2025-04-16,11:30 - 12:30,Intro to Data Structures and Algorithms,Lab help.,None.
