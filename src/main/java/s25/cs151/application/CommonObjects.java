@@ -29,6 +29,7 @@ public class CommonObjects {
 
     private ObservableList<TimeSlot> timeSlotCSVList;
 
+    private ObservableList<Schedule> scheduleCSVList;
 
     private CommonObjects() {}
 
@@ -99,6 +100,30 @@ public class CommonObjects {
             }
             Collections.sort(timeSlotCSVList);
             return timeSlotCSVList;
+        } catch (Exception e) {
+            System.out.print(e.getStackTrace());
+        }
+        return null;
+    }
+
+    public ObservableList<Schedule> getScheduleCSVList() {
+        try {
+            File file = new File("schedule.csv");
+            Scanner sc = new Scanner(file);
+            scheduleCSVList = FXCollections.observableArrayList();
+            String line = "";
+            String[] elements;
+
+            sc.nextLine();
+            while(sc.hasNextLine()) {
+                line = sc.nextLine();
+                elements = line.split(",");
+                Schedule s = new Schedule(elements[0],elements[1], elements[2],
+                        elements[3], elements[4], elements[5]);
+                scheduleCSVList.add(s);
+            }
+            Collections.sort(scheduleCSVList);
+            return scheduleCSVList;
         } catch (Exception e) {
             System.out.print(e.getStackTrace());
         }

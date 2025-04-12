@@ -76,7 +76,7 @@ public class DefineScheduleController {
                 timeSlotNewFormatList.add(format);
             }
             timeSlotBox.setItems(timeSlotNewFormatList);
-            timeSlotBox.setValue(timeSlotCSVList.get(0).getFromHour() + "  - " + timeSlotCSVList.get(0).getToHour());
+            timeSlotBox.setValue(timeSlotCSVList.get(0).getFromHour() + " - " + timeSlotCSVList.get(0).getToHour());
         }
     }
 
