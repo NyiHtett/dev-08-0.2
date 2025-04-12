@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import s25.cs151.application.Main;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class DefineScheduleController {
 
@@ -37,7 +38,21 @@ public class DefineScheduleController {
     public TextArea commentTextArea;
 
     @FXML
+    public void initialize() {
+        datePicker.setValue(LocalDate.now());
+    }
+
+    @FXML
     public void onSubmitClick(ActionEvent actionEvent) {
+        String studentName = nameField.getText();
+        LocalDate date = datePicker.getValue(); // Returns a LocalDate Object
+        String reason = reasonTextArea.getText();
+        String comment = commentTextArea.getText();
+
+        /*
+        To Do:
+        Save data to CSV file
+         */
     }
 
     @FXML
