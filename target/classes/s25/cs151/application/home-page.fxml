@@ -8,46 +8,54 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.MainController">
+<Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.controller.MainController">
    <children>
       <Label layoutX="154.0" layoutY="14.0" prefHeight="78.0" prefWidth="307.0" text="OfficeTracker" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
-      <Label layoutX="143.0" layoutY="125.0" prefHeight="68.0" prefWidth="318.0" text="Manage &amp; schedule your office hours efficiently." wrapText="true">
+      <Label layoutX="142.0" layoutY="113.0" prefHeight="68.0" prefWidth="318.0" text="Manage &amp; schedule your office hours efficiently." wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Text fontSmoothingType="LCD" layoutX="143.0" layoutY="237.0" stroke="#0d11d0" strokeType="OUTSIDE" strokeWidth="0.0" text="Office Hours">
+      <Text fontSmoothingType="LCD" layoutX="148.0" layoutY="221.0" stroke="#0d11d0" strokeType="OUTSIDE" strokeWidth="0.0" text="Office Hours">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="143.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Semester's Time Slots">
+      <Text layoutX="148.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Semester's Time Slots">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="143.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses">
+      <Text layoutX="148.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Courses">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Button layoutX="325.0" layoutY="219.0" mnemonicParsing="false" onAction="#onDefineOfficeHoursClick" text="Define" />
-      <Button layoutX="394.0" layoutY="219.0" mnemonicParsing="false" onAction="#onViewOfficeHoursClick" text="View" />
-      <Button layoutX="325.0" layoutY="261.0" mnemonicParsing="false" onAction="#onDefineTimeSlotsClick" text="Define" />
-      <Button layoutX="325.0" layoutY="304.0" mnemonicParsing="false" onAction="#onDefineCoursesClick" text="Define" />
-      <Button layoutX="394.0" layoutY="261.0" mnemonicParsing="false" onAction="#onViewTimeSlotsClick" text="View" />
-      <Button layoutX="394.0" layoutY="304.0" mnemonicParsing="false" onAction="#onViewCoursesClick" text="View" />
+      <Button layoutX="330.0" layoutY="202.0" mnemonicParsing="false" onAction="#onDefineOfficeHoursClick" text="Define" />
+      <Button layoutX="399.0" layoutY="202.0" mnemonicParsing="false" onAction="#onViewOfficeHoursClick" text="View" />
+      <Button layoutX="330.0" layoutY="244.0" mnemonicParsing="false" onAction="#onDefineTimeSlotsClick" text="Define" />
+      <Button layoutX="330.0" layoutY="287.0" mnemonicParsing="false" onAction="#onDefineCoursesClick" text="Define" />
+      <Button layoutX="399.0" layoutY="244.0" mnemonicParsing="false" onAction="#onViewTimeSlotsClick" text="View" />
+      <Button layoutX="399.0" layoutY="287.0" mnemonicParsing="false" onAction="#onViewCoursesClick" text="View" />
       <Separator layoutX="6.0" layoutY="97.0" prefHeight="9.0" prefWidth="589.0" />
-      <Separator layoutX="95.0" layoutY="255.0" prefHeight="0.0" prefWidth="399.0" />
-      <Separator layoutX="96.0" layoutY="293.0" prefHeight="0.0" prefWidth="399.0" />
-      <Separator layoutX="97.0" layoutY="338.0" prefHeight="0.0" prefWidth="399.0" />
-      <Separator layoutX="96.0" layoutY="210.0" prefHeight="0.0" prefWidth="399.0" />
-      <Separator layoutX="93.0" layoutY="210.0" orientation="VERTICAL" prefHeight="129.0" prefWidth="6.0" />
-      <Separator layoutX="491.0" layoutY="209.0" orientation="VERTICAL" prefHeight="129.0" prefWidth="6.0" />
+      <Separator layoutX="100.0" layoutY="237.0" prefHeight="0.0" prefWidth="399.0" />
+      <Separator layoutX="101.0" layoutY="278.0" prefHeight="0.0" prefWidth="399.0" />
+      <Separator layoutX="100.0" layoutY="321.0" prefHeight="0.0" prefWidth="399.0" />
+      <Separator layoutX="101.0" layoutY="192.0" prefHeight="0.0" prefWidth="399.0" />
+      <Separator layoutX="98.0" layoutY="192.0" orientation="VERTICAL" prefHeight="174.0" prefWidth="6.0" />
+      <Separator layoutX="496.0" layoutY="191.0" orientation="VERTICAL" prefHeight="174.0" prefWidth="6.0" />
       <Accordion layoutX="145.0" layoutY="237.0" />
+      <Text layoutX="148.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Schedule">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Button layoutX="330.0" layoutY="331.0" mnemonicParsing="false" onAction="#onDefineScheduleClick" text="Define" />
+      <Button layoutX="399.0" layoutY="331.0" mnemonicParsing="false" onAction="#onViewScheduleClick" text="View" />
+      <Separator layoutX="100.0" layoutY="365.0" prefHeight="3.0" prefWidth="399.0" />
    </children>
 </Pane>
