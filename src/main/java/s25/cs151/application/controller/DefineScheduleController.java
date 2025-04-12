@@ -13,10 +13,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import s25.cs151.application.*;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class DefineScheduleController {
 
@@ -93,10 +96,26 @@ public class DefineScheduleController {
         System.out.println(reason);
         System.out.println(comment);
 
-        /*
-        To Do:
-        Save data to CSV file
-         */
+        try {
+            File file = new File("schedule.csv");
+            FileWriter fw = new FileWriter(file, true);
+            fw.append(studentName + "," + date + "," + timeSlot + "," + course
+                        + "," + reason + "," + comment + "\n");
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            schedulePane.getChildren().clear();
+            schedulePane.getChildren().add(pane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
