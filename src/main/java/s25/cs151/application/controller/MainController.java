@@ -101,4 +101,31 @@ public class MainController {
         }
     }
 
+    @FXML
+    public void onDefineScheduleClick(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("define-schedule.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(pane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void onViewScheduleClick(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-schedule.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(pane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
