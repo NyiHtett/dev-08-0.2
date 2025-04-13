@@ -49,9 +49,10 @@ public class ScheduleViewController {
         // Set up columns
         scheduleDate.setCellValueFactory(new PropertyValueFactory<>("scheduleDate"));
         timeSlot.setCellValueFactory(new PropertyValueFactory<>("timeSlot"));
+        timeSlot.setStyle("-fx-font-family: monospace;-fx-font-weight: bold;");;
         courseName.setCellValueFactory(new PropertyValueFactory<>("courseName"));
+        courseName.setStyle("-fx-font-family: monospace;-fx-font-weight: bold;");
         studentName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
-
         reason.setCellValueFactory(new PropertyValueFactory<>("reason"));
         comment.setCellValueFactory(new PropertyValueFactory<>("comment"));
 

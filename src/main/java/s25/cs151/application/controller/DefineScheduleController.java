@@ -46,6 +46,7 @@ public class DefineScheduleController {
         /*Date Picker*/
         // Sets datePicker's value to the current date
         datePicker.setValue(LocalDate.now());
+        datePicker.setStyle("-fx-font-family: monospace;-fx-font-weight: bold;");
 
         /*Course Dropdown Menu*/
         // Assigning the one and only CommonObjects reference to commonObjects
@@ -61,6 +62,7 @@ public class DefineScheduleController {
             }
             courseBox.setItems(courseNameList);
             courseBox.setValue(courseCSVList.get(0).getCourseCode().replace("-", "")+"-0"+courseCSVList.get(0).getCourseNumber());
+            courseBox.setStyle("-fx-font-family: monospace;-fx-font-weight: bold;");
         }
 
         /*Time Slot Dropdown Menu*/
@@ -74,6 +76,7 @@ public class DefineScheduleController {
             }
             timeSlotBox.setItems(timeSlotNewFormatList);
             timeSlotBox.setValue(timeSlotCSVList.get(0).getFromHour() + " - " + timeSlotCSVList.get(0).getToHour());
+            timeSlotBox.setStyle("-fx-font-family: monospace;-fx-font-weight: bold;");
         }
     }
 
@@ -115,7 +118,7 @@ public class DefineScheduleController {
             File file = new File("schedule.csv");
             FileWriter fw = new FileWriter(file, true);
             fw.append(studentName + "," + date + "," + timeSlot + "," + course
-                        + "," + reason + "," + comment + "\n");
+                    + "," + reason + "," + comment + "\n");
             fw.close();
         } catch (IOException e) {
             e.printStackTrace();

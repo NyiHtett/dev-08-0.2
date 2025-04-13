@@ -10,8 +10,8 @@
       <TableView fx:id="table" layoutY="-1.0" prefHeight="360.0" prefWidth="600.0">
          <columns>
             <TableColumn fx:id="scheduleDate" prefWidth="100.0" sortType="DESCENDING" text="Schedule Date" />
-            <TableColumn fx:id="timeSlot" prefWidth="100.0" sortType="DESCENDING" text="Time Slot" />
-            <TableColumn fx:id="courseName" prefWidth="100.0" sortType="DESCENDING" text="Course" />
+            <TableColumn fx:id="timeSlot" prefWidth="120.0" sortType="DESCENDING" text="Time Slot" />
+            <TableColumn fx:id="courseName" prefWidth="90.0" sortType="DESCENDING" text="Course" />
             <TableColumn fx:id="studentName" prefWidth="100.0" sortType="DESCENDING" text="Student" />
             <TableColumn fx:id="reason" prefWidth="100.0" sortType="DESCENDING" text="Reason" />
             <TableColumn fx:id="comment" prefWidth="100.0" sortType="DESCENDING" text="Comment" />

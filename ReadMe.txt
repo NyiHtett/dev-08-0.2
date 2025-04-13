@@ -4,9 +4,9 @@
 
 # Who did what:
 1. Daniel Nguyen: Sorting based on time, view schedule page
-2. Omar Adrianne Bapora: Code redesign, home/define/view pages, save to CSV, sorting, and output
+2. Omar Adrianne Bapora: Code redesign, home/define/view pages, save to CSV, table-view sorting and output
 3. Joshua Lai: Error handling for schedule submissions
-4. Nyi Htet:
+4. Nyi Htet: Data formatting and styling
 
 Previous Versions:
 
