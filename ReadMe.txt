@@ -1,5 +1,17 @@
 # Name of application: OfficeTracker
 
+# Version: 0.6
+
+# Who did what:
+1. Daniel Nguyen: Sorting based on time, view schedule page
+2. Omar Adrianne Bapora: Code redesign, home/define/view pages, save to CSV, sorting, and output
+3. Joshua Lai: Error handling for schedule submissions
+4. Nyi Htet:
+
+Previous Versions:
+
+# Any other instructions that users need to know:
+
 # Version: 0.5
 
 # Who did what:
@@ -9,8 +21,6 @@
 4. Nyi Htet: UI, UI features, define semester's time slots
 
 # Any other instructions that users need to know:
-
-Previous Versions:
 
 # Version: 0.4
 

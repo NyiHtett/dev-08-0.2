@@ -29,6 +29,9 @@ public class ScheduleViewController {
     public TableColumn timeSlot;
 
     @FXML
+    public TableColumn courseName;
+
+    @FXML
     public TableColumn studentName;
 
     @FXML
@@ -46,7 +49,9 @@ public class ScheduleViewController {
         // Set up columns
         scheduleDate.setCellValueFactory(new PropertyValueFactory<>("scheduleDate"));
         timeSlot.setCellValueFactory(new PropertyValueFactory<>("timeSlot"));
+        courseName.setCellValueFactory(new PropertyValueFactory<>("courseName"));
         studentName.setCellValueFactory(new PropertyValueFactory<>("studentName"));
+
         reason.setCellValueFactory(new PropertyValueFactory<>("reason"));
         comment.setCellValueFactory(new PropertyValueFactory<>("comment"));
 

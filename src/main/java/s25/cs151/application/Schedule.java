@@ -26,6 +26,10 @@ public class Schedule implements Comparable<Schedule> {
         return this.timeSlot;
     }
 
+    public String getCourseName() {
+        return this.courseName;
+    }
+
     public String getStudentName() {
         return this.studentName;
     }
