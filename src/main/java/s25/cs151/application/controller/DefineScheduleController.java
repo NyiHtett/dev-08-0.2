@@ -57,10 +57,10 @@ public class DefineScheduleController {
             // Creating a list of the Course Object's names to be displayed by the dropdown
             ObservableList<String> courseNameList = FXCollections.observableArrayList();
             for (Course course: courseCSVList) {
-                courseNameList.add(course.getCourseName());
+                courseNameList.add(course.getCourseCode().replace("-", "") + "-0" + course.getCourseNumber());
             }
             courseBox.setItems(courseNameList);
-            courseBox.setValue(courseCSVList.get(0).getCourseName());
+            courseBox.setValue(courseCSVList.get(0).getCourseCode().replace("-", "")+"-0"+courseCSVList.get(0).getCourseNumber());
         }
 
         /*Time Slot Dropdown Menu*/
