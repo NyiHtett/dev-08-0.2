@@ -128,4 +128,18 @@ public class MainController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void onSearchScheduleClick(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("search-schedule.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(pane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

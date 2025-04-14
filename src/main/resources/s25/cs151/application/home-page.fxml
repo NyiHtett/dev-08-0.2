@@ -56,7 +56,7 @@
       </Text>
       <Button layoutX="334.0" layoutY="307.0" mnemonicParsing="false" onAction="#onDefineScheduleClick" text="Define" />
       <Button layoutX="403.0" layoutY="307.0" mnemonicParsing="false" onAction="#onViewScheduleClick" text="View" />
-      <Button layoutX="364.0" layoutY="348.0" mnemonicParsing="false" onAction="#onViewScheduleClick" text="Search" />
+      <Button layoutX="364.0" layoutY="348.0" mnemonicParsing="false" onAction="#onSearchScheduleClick" text="Search" />
       <Separator layoutX="105.0" layoutY="388.0" prefHeight="3.0" prefWidth="396.0" />
    </children>
 </Pane>
