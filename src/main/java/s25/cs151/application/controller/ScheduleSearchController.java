@@ -47,17 +47,11 @@ public class ScheduleSearchController {
     @FXML
     private TextField searchField;
 
-    @FXML
-    public void setUpColumns(String name) {
-        CommonObjects commonObject = CommonObjects.getInstance();
-        ObservableList<Schedule> scheduleCSVList = commonObject.getScheduleCSVList();
+    CommonObjects commonObject = CommonObjects.getInstance();
+    ObservableList<Schedule> scheduleCSVList = commonObject.getScheduleCSVList();
 
-        //filtering the schedule by name
-        if (name != null) {
-            List<Schedule> filteredList = scheduleCSVList.stream().filter(schedule -> name.equals(schedule.getStudentName())).toList();
-            scheduleCSVList.setAll(filteredList);
-        }
-
+        @FXML
+    public void setUpColumns(ObservableList<Schedule> list) {
         // Set up columns
         scheduleDate.setCellValueFactory(new PropertyValueFactory<>("scheduleDate"));
         timeSlot.setCellValueFactory(new PropertyValueFactory<>("timeSlot"));
@@ -68,22 +62,30 @@ public class ScheduleSearchController {
         reason.setCellValueFactory(new PropertyValueFactory<>("reason"));
         comment.setCellValueFactory(new PropertyValueFactory<>("comment"));
 
-        //dynamically changing the prompt if no schedules are found
-        if(scheduleCSVList.isEmpty()) {
-            table.setPlaceholder(new javafx.scene.control.Label("No schedules found " + (name == null ? "" : "for " + name)));
-        }
-        table.setItems(scheduleCSVList);
+        table.setItems(list);
     }
 
     @FXML
     public void initialize() {
-        setUpColumns("");
+        //setUpColumns("");
     }
 
     @FXML
     void searchName() {
-        setUpColumns(searchField.getText());
-        searchField.clear();
+        //filtering the schedule by name
+        ObservableList<Schedule> filteredObsList = FXCollections.observableArrayList();
+        String nameSearched = searchField.getText();
+        if (nameSearched != null) {
+            List<Schedule> filteredList = scheduleCSVList.stream().filter(schedule -> nameSearched.equals(schedule.getStudentName())).toList();
+            filteredObsList.setAll(filteredList);
+        }
+
+        //dynamically changing the prompt if no schedules are found
+        if(scheduleCSVList.isEmpty()) {
+            table.setPlaceholder(new javafx.scene.control.Label("No schedules found " + (nameSearched == null ? "" : "for " + nameSearched)));
+        }
+
+        setUpColumns(filteredObsList);
     }
 
     @FXML
