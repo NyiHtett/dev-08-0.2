@@ -82,7 +82,14 @@ public class ScheduleSearchController {
         String searchedName = searchField.getText();
         if (searchedName != null) {
             // Temporary list
-            List<Schedule> filteredList = scheduleCSVList.stream().filter(schedule -> searchedName.equals(schedule.getStudentName())).toList();
+            //List<Schedule> filteredList = scheduleCSVList.stream().filter(schedule -> searchedName.equalsIgnoreCase(schedule.getStudentName())).toList();
+            ObservableList<Schedule> filteredList = FXCollections.observableArrayList();
+            for (Schedule schedule: scheduleCSVList) {
+                if (searchedName.equalsIgnoreCase(schedule.getStudentName().substring(0, searchedName.length()))) {
+                    filteredList.add(schedule);
+                }
+            }
+
             // Sets the values of filteredObsList
             filteredObsList.setAll(filteredList);
         }
