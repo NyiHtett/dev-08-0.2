@@ -12,7 +12,7 @@
 
 <AnchorPane fx:id="schedulePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.controller.DefineScheduleController">
    <children>
-      <Label layoutX="53.0" layoutY="20.0" text="Define Office Hours Schedule">
+      <Label layoutX="50.0" layoutY="20.0" text="Schedule Appointment">
          <font>
             <Font size="24.0" />
          </font>
