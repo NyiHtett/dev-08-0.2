@@ -19,8 +19,8 @@
             </columns>
         </TableView>
         <Button layoutX="275.0" layoutY="366.0" mnemonicParsing="false" onAction="#onExitClick" prefHeight="26.0" prefWidth="50.0" text="Exit" />
-      <TextField fx:id="searchField" layoutX="98.0" layoutY="15.0" />
-      <Button layoutX="21.0" layoutY="15.0" mnemonicParsing="false" onAction="#searchName" text="Search" />
-      <Button layoutX="520.0" layoutY="15.0" mnemonicParsing="false" onAction="#searchName" text="Delete" />
+      <TextField fx:id="searchField" layoutX="21.0" layoutY="15.0" />
+      <Button layoutX="198.0" layoutY="15.0" mnemonicParsing="false" onAction="#searchName" text="Search" />
+      <Button layoutX="269.0" layoutY="15.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
     </children>
 </AnchorPane>

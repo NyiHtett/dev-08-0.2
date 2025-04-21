@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -16,7 +15,9 @@ import s25.cs151.application.CommonObjects;
 import s25.cs151.application.Main;
 import s25.cs151.application.Schedule;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 public class ScheduleSearchController {
@@ -47,10 +48,16 @@ public class ScheduleSearchController {
     @FXML
     private TextField searchField;
 
-    CommonObjects commonObject = CommonObjects.getInstance();
-    ObservableList<Schedule> scheduleCSVList = commonObject.getScheduleCSVList();
+    private CommonObjects commonObject = CommonObjects.getInstance();
+    private ObservableList<Schedule> scheduleCSVList = commonObject.getScheduleCSVList();
+    // List to contain the searched objects
+    private ObservableList<Schedule> filteredObsList = FXCollections.observableArrayList();
 
-        @FXML
+    /**
+     * Purpose: Display the contents of list.
+     * @param list The ObservableList to display.
+     */
+    @FXML
     public void setUpColumns(ObservableList<Schedule> list) {
         // Set up columns
         scheduleDate.setCellValueFactory(new PropertyValueFactory<>("scheduleDate"));
@@ -65,29 +72,76 @@ public class ScheduleSearchController {
         table.setItems(list);
     }
 
-    @FXML
-    public void initialize() {
-        //setUpColumns("");
-    }
-
+    /**
+     * Purpose: Searches schedule appointment by name and invokes setUpColumns().
+     */
     @FXML
     void searchName() {
-        //filtering the schedule by name
-        ObservableList<Schedule> filteredObsList = FXCollections.observableArrayList();
-        String nameSearched = searchField.getText();
-        if (nameSearched != null) {
-            List<Schedule> filteredList = scheduleCSVList.stream().filter(schedule -> nameSearched.equals(schedule.getStudentName())).toList();
+        // filtering the schedule by name
+        // Student name searched
+        String searchedName = searchField.getText();
+        if (searchedName != null) {
+            // Temporary list
+            List<Schedule> filteredList = scheduleCSVList.stream().filter(schedule -> searchedName.equals(schedule.getStudentName())).toList();
+            // Sets the values of filteredObsList
             filteredObsList.setAll(filteredList);
         }
 
         //dynamically changing the prompt if no schedules are found
-        if(scheduleCSVList.isEmpty()) {
-            table.setPlaceholder(new javafx.scene.control.Label("No schedules found " + (nameSearched == null ? "" : "for " + nameSearched)));
+        if(filteredObsList.isEmpty()) {
+            table.setPlaceholder(new javafx.scene.control.Label("No schedules found " + (searchedName == null ? "" : "for " + searchedName)));
         }
 
         setUpColumns(filteredObsList);
     }
 
+    /**
+     * Purpose: Delete the selected object/schedule appointment.
+     * @param actionEvent
+     */
+    public void delete(ActionEvent actionEvent) {
+        // Save selected schedule
+        Object o = table.getSelectionModel().getSelectedItem();
+        Schedule selectedSchedule = (Schedule) o;
+
+        // Terminal output
+        System.out.println("Printing schedule to delete:");
+        System.out.println(selectedSchedule);
+
+        // Removes from both primary and helper list
+        scheduleCSVList.remove(selectedSchedule);
+        filteredObsList.remove(selectedSchedule);
+
+        System.out.println("Printing scheduleCSVList objects:");
+        for (Schedule schedule: scheduleCSVList) {
+            System.out.println(schedule);
+        }
+
+        updateScheduleCSVFile();
+        searchName();
+    }
+
+    /**
+     * Purpose: Update/rewrites the CSV to exclude deleted content.
+     */
+    public void updateScheduleCSVFile() {
+        try {
+            File file = new File("schedule.csv");
+            PrintWriter pw = new PrintWriter(file);
+            pw.println("StudentName,ScheduleDate,TimeSlot,Course,Reason,Comment");
+            for (Schedule schedule: scheduleCSVList) {
+                pw.println(schedule);
+            }
+            pw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Purpose: Redirect user back to the home page.
+     * @param actionEvent
+     */
     @FXML
     public void onExitClick(ActionEvent actionEvent) {
         try {
@@ -101,4 +155,5 @@ public class ScheduleSearchController {
             e.printStackTrace();
         }
     }
+
 }

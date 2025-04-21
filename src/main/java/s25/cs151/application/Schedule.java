@@ -76,7 +76,7 @@ public class Schedule implements Comparable<Schedule> {
             int hour = Integer.parseInt(hourMinute[0]);
             int minute = Integer.parseInt(hourMinute[1]);
             int totalTime = hour * 60 + minute;
-        
+
             String[] hourMinuteOther = startTimeOther.split(":");
             int hourOther = Integer.parseInt(hourMinuteOther[0]);
             int minuteOther = Integer.parseInt(hourMinuteOther[1]);
@@ -90,5 +90,11 @@ public class Schedule implements Comparable<Schedule> {
                 return 0;
             }
         }
+    }
+
+    public String toString() {
+        return studentName + "," + scheduleDate + ","
+            + timeSlot + "," + courseName + ","
+            + reason + "," + comment + ",";
     }
 }
