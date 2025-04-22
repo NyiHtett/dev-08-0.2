@@ -18,32 +18,31 @@ import s25.cs151.application.Schedule;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 public class ScheduleSearchController {
     @FXML
-    public AnchorPane viewSchedulePane;
+    private AnchorPane viewSchedulePane;
 
     @FXML
-    public TableView table;
+    private TableView table;
 
     @FXML
-    public TableColumn scheduleDate;
+    private TableColumn scheduleDate;
 
     @FXML
-    public TableColumn timeSlot;
+    private TableColumn timeSlot;
 
     @FXML
-    public TableColumn courseName;
+    private TableColumn courseName;
 
     @FXML
-    public TableColumn studentName;
+    private TableColumn studentName;
 
     @FXML
-    public TableColumn reason;
+    private TableColumn reason;
 
     @FXML
-    public TableColumn comment;
+    private TableColumn comment;
 
     @FXML
     private TextField searchField;
@@ -51,7 +50,7 @@ public class ScheduleSearchController {
     private CommonObjects commonObject = CommonObjects.getInstance();
     private ObservableList<Schedule> scheduleCSVList = commonObject.getScheduleCSVList();
     // List to contain the searched objects
-    private ObservableList<Schedule> filteredObsList = FXCollections.observableArrayList();
+    private ObservableList<Schedule> searchList = FXCollections.observableArrayList();
 
     /**
      * Purpose: Display the contents of list.
@@ -77,29 +76,24 @@ public class ScheduleSearchController {
      */
     @FXML
     void searchName() {
-        // filtering the schedule by name
+        // Creating subset of "scheduleCSVList" called "searchList" by name.
         // Student name searched
         String searchedName = searchField.getText();
         if (searchedName != null) {
-            // Temporary list
-            //List<Schedule> filteredList = scheduleCSVList.stream().filter(schedule -> searchedName.equalsIgnoreCase(schedule.getStudentName())).toList();
-            ObservableList<Schedule> filteredList = FXCollections.observableArrayList();
             for (Schedule schedule: scheduleCSVList) {
                 if (searchedName.equalsIgnoreCase(schedule.getStudentName().substring(0, searchedName.length()))) {
-                    filteredList.add(schedule);
+                    searchList.add(schedule);
                 }
             }
-
-            // Sets the values of filteredObsList
-            filteredObsList.setAll(filteredList);
         }
 
         //dynamically changing the prompt if no schedules are found
-        if(filteredObsList.isEmpty()) {
+        if(searchList.isEmpty()) {
             table.setPlaceholder(new javafx.scene.control.Label("No schedules found " + (searchedName == null ? "" : "for " + searchedName)));
         }
 
-        setUpColumns(filteredObsList);
+        // Displays the subset (search/filtered) list
+        setUpColumns(searchList);
     }
 
     /**
@@ -115,16 +109,22 @@ public class ScheduleSearchController {
         System.out.println("Printing schedule to delete:");
         System.out.println(selectedSchedule);
 
-        // Removes from both primary and helper list
+        // Removes from both primary and helper subset list
         scheduleCSVList.remove(selectedSchedule);
-        filteredObsList.remove(selectedSchedule);
+        searchList.remove(selectedSchedule);
 
+        // Console output
         System.out.println("Printing scheduleCSVList objects:");
         for (Schedule schedule: scheduleCSVList) {
             System.out.println(schedule);
         }
 
+        // Updates the contents of schedule.csv to exclude the deleted appointment
         updateScheduleCSVFile();
+        // Resets the searchList
+        searchList.clear();
+        // Restarts the search using the previously given name to display an
+        // updated version of searchList.
         searchName();
     }
 
