@@ -133,7 +133,7 @@ public class ScheduleSearchController {
      */
     public void updateScheduleCSVFile() {
         try {
-            File file = new File("schedule.csv");
+            File file = new File("src/csv_files/schedule.csv");
             PrintWriter pw = new PrintWriter(file);
             pw.println("StudentName,ScheduleDate,TimeSlot,Course,Reason,Comment");
             for (Schedule schedule: scheduleCSVList) {

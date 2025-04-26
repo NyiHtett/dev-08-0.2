@@ -115,7 +115,7 @@ public class DefineScheduleController {
         System.out.println(comment);
 
         try {
-            File file = new File("schedule.csv");
+            File file = new File("src/csv_files/schedule.csv");
             FileWriter fw = new FileWriter(file, true);
             fw.append(studentName + "," + date + "," + timeSlot + "," + course
                     + "," + reason + "," + comment + "\n");

@@ -50,12 +50,12 @@ public class DefineController  {
     @FXML
     private void saveDataToCSV(String semester, String year, ArrayList<String> days) {
 
-        String csvFilePath = "semester_office_hours.csv";
+        String csvFilePath = "src/csv_files/semester_office_hours.csv";
 
         boolean isDuplicate = false;
 
         try {
-            File file = new File("semester_office_hours.csv");
+            File file = new File("src/csv_files/semester_office_hours.csv");
             Scanner sc = new Scanner(file);
             String line = "";
 

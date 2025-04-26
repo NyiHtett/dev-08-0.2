@@ -39,7 +39,7 @@ public class CommonObjects {
 
     public ObservableList<TermWeekday> getTermWeekdayCSVList() {
         try {
-            File file = new File("semester_office_hours.csv");
+            File file = new File("src/csv_files/semester_office_hours.csv");
             Scanner sc = new Scanner(file);
             termWeekdayCSVList = FXCollections.observableArrayList();
             String line = "";
@@ -62,7 +62,7 @@ public class CommonObjects {
 
     public ObservableList<Course> getCourseCSVList() {
         try {
-            File file = new File("courses.csv");
+            File file = new File("src/csv_files/courses.csv");
             Scanner sc = new Scanner(file);
             courseCSVList = FXCollections.observableArrayList();
             String line = "";
@@ -85,7 +85,7 @@ public class CommonObjects {
 
     public ObservableList<TimeSlot> getTimeSlotCSVList() {
         try {
-            File file = new File("time_slots.csv");
+            File file = new File("src/csv_files/time_slots.csv");
             Scanner sc = new Scanner(file);
             timeSlotCSVList = FXCollections.observableArrayList();
             String line = "";
@@ -108,7 +108,7 @@ public class CommonObjects {
 
     public ObservableList<Schedule> getScheduleCSVList() {
         try {
-            File file = new File("schedule.csv");
+            File file = new File("src/csv_files/schedule.csv");
             Scanner sc = new Scanner(file);
             scheduleCSVList = FXCollections.observableArrayList();
             String line = "";

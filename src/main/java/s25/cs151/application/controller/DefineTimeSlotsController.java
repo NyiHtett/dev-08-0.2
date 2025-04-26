@@ -86,7 +86,7 @@ public class DefineTimeSlotsController {
             alert.showAndWait();
             return;
         }
-        String csvFilePath = "time_slots.csv";
+        String csvFilePath = "src/csv_files/time_slots.csv";
         try(FileWriter writer = new FileWriter(csvFilePath, true)) {
 //            if (new java.io.File(csvFilePath).length() > 0) {
 //                writer.append("\n");

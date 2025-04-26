@@ -68,12 +68,12 @@ public class DefineCourseController {
 
     @FXML
     protected void saveCourse() {
-        String csvFilePath = "courses.csv";
+        String csvFilePath = "src/csv_files/courses.csv";
 
         boolean isDuplicate = false;
 
         try {
-            File file = new File("courses.csv");
+            File file = new File("src/csv_files/courses.csv");
             Scanner sc = new Scanner(file);
             String line = "";
 
