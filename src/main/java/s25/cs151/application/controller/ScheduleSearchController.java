@@ -18,6 +18,7 @@ import s25.cs151.application.Schedule;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
 
 public class ScheduleSearchController {
     @FXML
@@ -93,6 +94,8 @@ public class ScheduleSearchController {
         if (searchList.isEmpty()) {
             table.setPlaceholder(new javafx.scene.control.Label("No schedules found " + (searchedName == null ? "" : "for " + searchedName)));
         }
+
+        Collections.reverse(searchList);
 
         // Displays the subset (search/filtered) list
         setUpColumns(searchList);
