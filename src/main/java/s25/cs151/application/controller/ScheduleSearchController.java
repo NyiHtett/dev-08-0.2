@@ -81,7 +81,7 @@ public class ScheduleSearchController {
         String searchedName = searchField.getText();
         if (searchedName != null) {
             for (Schedule schedule: scheduleCSVList) {
-                if (searchedName.equalsIgnoreCase(schedule.getStudentName().substring(0, searchedName.length()))) {
+                if (schedule.getStudentName().toLowerCase().contains(searchedName.toLowerCase())) {
                     searchList.add(schedule);
                 }
             }
