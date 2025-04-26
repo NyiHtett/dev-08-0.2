@@ -76,11 +76,13 @@ public class ScheduleSearchController {
      */
     @FXML
     void searchName() {
+        searchList.clear();
+
         // Creating subset of "scheduleCSVList" called "searchList" by name.
         // Student name searched
         String searchedName = searchField.getText();
         if (searchedName != null) {
-            for (Schedule schedule: scheduleCSVList) {
+            for (Schedule schedule : scheduleCSVList) {
                 if (schedule.getStudentName().toLowerCase().contains(searchedName.toLowerCase())) {
                     searchList.add(schedule);
                 }
@@ -88,7 +90,7 @@ public class ScheduleSearchController {
         }
 
         //dynamically changing the prompt if no schedules are found
-        if(searchList.isEmpty()) {
+        if (searchList.isEmpty()) {
             table.setPlaceholder(new javafx.scene.control.Label("No schedules found " + (searchedName == null ? "" : "for " + searchedName)));
         }
 
