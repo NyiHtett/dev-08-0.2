@@ -1,7 +1,5 @@
 package s25.cs151.application;
 
-import s25.cs151.application.controller.TableViewController;
-
 public class TermWeekday implements Comparable<TermWeekday> {
     private String semester;
     private int semesterVal;

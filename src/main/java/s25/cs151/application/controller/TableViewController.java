@@ -12,6 +12,7 @@ import s25.cs151.application.CommonObjects;
 import s25.cs151.application.Main;
 import s25.cs151.application.TermWeekday;
 
+import java.io.File;
 import java.io.IOException;
 
 public class TableViewController {
@@ -33,7 +34,10 @@ public class TableViewController {
     public void initialize() {
 
         CommonObjects commonObject = CommonObjects.getInstance();
-        ObservableList<TermWeekday> termWeekdayCSVList = commonObject.getTermWeekdayCSVList();
+        // ObservableList<TermWeekday> termWeekdayCSVList = commonObject.getTermWeekdayCSVList();
+
+        File file = new File("src/csv_files/semester_office_hours.csv");
+        ObservableList<TermWeekday> termWeekdayCSVList = commonObject.getCSVList(file);
 
         // Set up columns
         semester.setCellValueFactory(new PropertyValueFactory<>("semester"));

@@ -49,7 +49,10 @@ public class ScheduleSearchController {
     private TextField searchField;
 
     private CommonObjects commonObject = CommonObjects.getInstance();
-    private ObservableList<Schedule> scheduleCSVList = commonObject.getScheduleCSVList();
+    // private ObservableList<Schedule> scheduleCSVList = commonObject.getScheduleCSVList();
+    File file = new File("src/csv_files/schedule.csv");
+    private ObservableList<Schedule> scheduleCSVList = commonObject.getCSVList(file);
+
     // List to contain the searched objects
     private ObservableList<Schedule> searchList = FXCollections.observableArrayList();
 

@@ -14,9 +14,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
 
 public class DefineScheduleController {
 
@@ -51,8 +48,16 @@ public class DefineScheduleController {
         /*Course Dropdown Menu*/
         // Assigning the one and only CommonObjects reference to commonObjects
         CommonObjects commonObjects = CommonObjects.getInstance();
+
         // courseCSVList now contains a list of Course Objects sorted by professors preference
+        /*
+        Outdated code, initial implementation
         ObservableList<Course> courseCSVList = commonObjects.getCourseCSVList();
+         */
+
+        File file1 = new File("src/csv_files/courses.csv");
+        ObservableList<Course> courseCSVList = commonObjects.getCSVList(file1);
+
         // If not empty, we set courseBox's default value and dropdown values
         if (!courseCSVList.isEmpty()) {
             // Creating a list of the Course Object's names to be displayed by the dropdown
@@ -66,7 +71,13 @@ public class DefineScheduleController {
         }
 
         /*Time Slot Dropdown Menu*/
+        /*
+        Outdated code, initial implementation
         ObservableList<TimeSlot> timeSlotCSVList = commonObjects.getTimeSlotCSVList();
+         */
+
+        File file2 = new File("src/csv_files/time_slots.csv");
+        ObservableList<TimeSlot> timeSlotCSVList = commonObjects.getCSVList(file2);
         if (!timeSlotCSVList.isEmpty()) {
             ObservableList<String> timeSlotNewFormatList = FXCollections.observableArrayList();
             String format = "";
