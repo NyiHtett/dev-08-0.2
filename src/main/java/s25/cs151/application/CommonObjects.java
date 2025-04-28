@@ -2,11 +2,9 @@ package s25.cs151.application;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import s25.cs151.application.controller.CoursesTableViewController;
-import s25.cs151.application.controller.TimeSlotsTableViewController;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.Scanner;
 
@@ -17,31 +15,36 @@ import java.util.Scanner;
  * Such objects should only be instantiated once.
  *
  * This class utilizes Class Design Pattern: Singleton
+ * This class now utilizes Polymorphism: April 28, 2025
  */
 public class CommonObjects {
     private static CommonObjects commonObjects = new CommonObjects();
 
     // JavaFX can work directly with ObservableList instead of ArrayList
-    // We are creating a list of TermWeekday Objects using courses.csv
-    private ObservableList<TermWeekday> termWeekdayCSVList;
+    private ObservableList<Comparable> CSVList;
 
-    private ObservableList<Course> courseCSVList;
-
-    private ObservableList<TimeSlot> timeSlotCSVList;
-
-    private ObservableList<Schedule> scheduleCSVList;
-
+    /**
+     * Private constructor required for singleton design pattern.
+     */
     private CommonObjects() {}
 
+    /**
+     * Provide access to commonObject.
+     * @return the one and only instance of CommonObjects.
+     */
     public static CommonObjects getInstance() {
         return commonObjects;
     }
 
-    public ObservableList<TermWeekday> getTermWeekdayCSVList() {
+    /**
+     * Reads a CSV file and returns a ObservableList of objects determined by the file.
+     * @param file the CSV file to read from.
+     * @return
+     */
+    public ObservableList getCSVList(File file) {
         try {
-            File file = new File("src/csv_files/semester_office_hours.csv");
             Scanner sc = new Scanner(file);
-            termWeekdayCSVList = FXCollections.observableArrayList();
+            CSVList = FXCollections.observableArrayList();
             String line = "";
             String[] elements;
 
@@ -49,84 +52,27 @@ public class CommonObjects {
             while(sc.hasNextLine()) {
                 line = sc.nextLine();
                 elements = line.split(",");
-                TermWeekday tw = new TermWeekday(elements[0], Integer.parseInt(elements[1]), elements[2]);
-                termWeekdayCSVList.add(tw);
+                if (file.getName().equals("semester_office_hours.csv")) {
+                    TermWeekday tw = new TermWeekday(elements[0], Integer.parseInt(elements[1]), elements[2]);
+                    CSVList.add(tw);
+                } else if (file.getName().equals("courses.csv")) {
+                    Course c = new Course(elements[0], elements[1], Integer.parseInt(elements[2]));
+                    CSVList.add(c);
+                } else if (file.getName().equals("time_slots.csv")) {
+                    TimeSlot ts = new TimeSlot(elements[0],elements[1]);
+                    CSVList.add(ts);
+                } else if (file.getName().equals("schedule.csv")) {
+                    Schedule s = new Schedule(elements[0],elements[1], elements[2],
+                            elements[3], elements[4], elements[5]);
+                    CSVList.add(s);
+                }
             }
-            Collections.sort(termWeekdayCSVList);
-            return termWeekdayCSVList;
-        } catch (Exception e) {
-            System.out.print(e.getStackTrace());
+            Collections.sort(CSVList);
+            return CSVList;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
         return null;
     }
 
-    public ObservableList<Course> getCourseCSVList() {
-        try {
-            File file = new File("src/csv_files/courses.csv");
-            Scanner sc = new Scanner(file);
-            courseCSVList = FXCollections.observableArrayList();
-            String line = "";
-            String[] elements;
-
-            sc.nextLine();
-            while(sc.hasNextLine()) {
-                line = sc.nextLine();
-                elements = line.split(",");
-                Course c = new Course(elements[0], elements[1], Integer.parseInt(elements[2]));
-                courseCSVList.add(c);
-            }
-            Collections.sort(courseCSVList);
-            return courseCSVList;
-        } catch (Exception e) {
-            System.out.print(e.getStackTrace());
-        }
-        return null;
-    }
-
-    public ObservableList<TimeSlot> getTimeSlotCSVList() {
-        try {
-            File file = new File("src/csv_files/time_slots.csv");
-            Scanner sc = new Scanner(file);
-            timeSlotCSVList = FXCollections.observableArrayList();
-            String line = "";
-            String[] elements;
-
-            sc.nextLine();
-            while(sc.hasNextLine()) {
-                line = sc.nextLine();
-                elements = line.split(",");
-                TimeSlot ts = new TimeSlot(elements[0],elements[1]);
-                timeSlotCSVList.add(ts);
-            }
-            Collections.sort(timeSlotCSVList);
-            return timeSlotCSVList;
-        } catch (Exception e) {
-            System.out.print(e.getStackTrace());
-        }
-        return null;
-    }
-
-    public ObservableList<Schedule> getScheduleCSVList() {
-        try {
-            File file = new File("src/csv_files/schedule.csv");
-            Scanner sc = new Scanner(file);
-            scheduleCSVList = FXCollections.observableArrayList();
-            String line = "";
-            String[] elements;
-
-            sc.nextLine();
-            while(sc.hasNextLine()) {
-                line = sc.nextLine();
-                elements = line.split(",");
-                Schedule s = new Schedule(elements[0],elements[1], elements[2],
-                        elements[3], elements[4], elements[5]);
-                scheduleCSVList.add(s);
-            }
-            Collections.sort(scheduleCSVList);
-            return scheduleCSVList;
-        } catch (Exception e) {
-            System.out.print(e.getStackTrace());
-        }
-        return null;
-    }
 }

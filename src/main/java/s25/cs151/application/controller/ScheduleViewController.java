@@ -13,6 +13,7 @@ import s25.cs151.application.CommonObjects;
 import s25.cs151.application.Main;
 import s25.cs151.application.Schedule;
 
+import java.io.File;
 import java.io.IOException;
 
 public class ScheduleViewController {
@@ -44,7 +45,10 @@ public class ScheduleViewController {
     public void initialize() {
 
         CommonObjects commonObject = CommonObjects.getInstance();
-        ObservableList<Schedule> scheduleCSVList = commonObject.getScheduleCSVList();
+        // ObservableList<Schedule> scheduleCSVList = commonObject.getScheduleCSVList();
+
+        File file = new File("src/csv_files/schedule.csv");
+        ObservableList<Schedule> scheduleCSVList = commonObject.getCSVList(file);
 
         // Set up columns
         scheduleDate.setCellValueFactory(new PropertyValueFactory<>("scheduleDate"));

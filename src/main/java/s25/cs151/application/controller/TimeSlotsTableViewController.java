@@ -12,6 +12,7 @@ import s25.cs151.application.CommonObjects;
 import s25.cs151.application.Main;
 import s25.cs151.application.TimeSlot;
 
+import java.io.File;
 import java.io.IOException;
 
 public class TimeSlotsTableViewController {
@@ -31,7 +32,10 @@ public class TimeSlotsTableViewController {
     public void initialize() {
 
         CommonObjects commonObject = CommonObjects.getInstance();
-        ObservableList<TimeSlot> timeSlotCSVList = commonObject.getTimeSlotCSVList();
+        // ObservableList<TimeSlot> timeSlotCSVList = commonObject.getTimeSlotCSVList();
+
+        File file = new File("src/csv_files/time_slots.csv");
+        ObservableList<TimeSlot> timeSlotCSVList = commonObject.getCSVList(file);
 
         // Set up columns
         fromHour.setCellValueFactory(new PropertyValueFactory<>("fromHour"));

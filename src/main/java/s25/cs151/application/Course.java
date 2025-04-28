@@ -1,7 +1,5 @@
 package s25.cs151.application;
 
-import s25.cs151.application.controller.CoursesTableViewController;
-
 public class Course implements Comparable<Course> {
     private String courseCode;
     private String courseName;

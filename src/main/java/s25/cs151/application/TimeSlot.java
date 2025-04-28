@@ -1,7 +1,5 @@
 package s25.cs151.application;
 
-import s25.cs151.application.controller.TimeSlotsTableViewController;
-
 public class TimeSlot implements Comparable<TimeSlot> {
     private String fromHour;
     private String toHour;

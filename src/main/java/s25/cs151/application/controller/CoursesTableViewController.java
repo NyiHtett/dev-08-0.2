@@ -12,6 +12,7 @@ import s25.cs151.application.CommonObjects;
 import s25.cs151.application.Course;
 import s25.cs151.application.Main;
 
+import java.io.File;
 import java.io.IOException;
 
 public class CoursesTableViewController {
@@ -33,7 +34,10 @@ public class CoursesTableViewController {
     @FXML
     public void initialize() {
         CommonObjects commonObject = CommonObjects.getInstance();
-        ObservableList<Course> courseCSVList = commonObject.getCourseCSVList();
+        // ObservableList<Course> courseCSVList = commonObject.getCourseCSVList();
+
+        File file = new File("src/csv_files/courses.csv");
+        ObservableList<Course> courseCSVList = commonObject.getCSVList(file);
 
         // Set up columns
         courseCode.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
