@@ -142,4 +142,18 @@ public class MainController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void onSearchEditClick(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("edit-schedule.fxml"));
+            Pane pane = fxmlLoader.load();
+
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(pane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
