@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -112,6 +113,15 @@ public class ScheduleSearchController {
         // Save selected schedule
         Object o = table.getSelectionModel().getSelectedItem();
         Schedule selectedSchedule = (Schedule) o;
+
+        if (o == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a schedule from the table to delete.");
+            alert.showAndWait();
+            return;
+        }
 
         // Terminal output
         System.out.println("Printing schedule to delete:");

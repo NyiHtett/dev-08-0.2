@@ -5,11 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Cell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
@@ -142,6 +138,15 @@ public class ScheduleEditController {
         Object o = table.getSelectionModel().getSelectedItem();
         Schedule selectedSchedule = (Schedule) o; 
 
+        if (o == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a schedule from the table to edit.");
+            alert.showAndWait();
+            return;
+        }
+
         // Terminal output
         System.out.println("Printing schedule to edit:");
         System.out.println(selectedSchedule);
@@ -163,6 +168,15 @@ public class ScheduleEditController {
         // Save selected schedule
         Object o = table.getSelectionModel().getSelectedItem();
         Schedule selectedSchedule = (Schedule) o;
+
+        if (o == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a schedule from the table to delete.");
+            alert.showAndWait();
+            return;
+        }
 
         // Terminal output
         System.out.println("Printing schedule to delete:");
@@ -238,7 +252,7 @@ public class ScheduleEditController {
 
         // Adding the eddited schedule
         Schedule editedSchedule = new Schedule(studentField.getText(), scheduleDataField.getText(), 
-        timeSlotField.getText(), courseField.getText(), reasonField.getText(), comment.getText());
+        timeSlotField.getText(), courseField.getText(), reasonField.getText(), commentField.getText());
 
         if(!scheduleCSVList.contains(editedSchedule)) {
             scheduleCSVList.add(editedSchedule);
