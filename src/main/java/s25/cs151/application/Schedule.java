@@ -42,6 +42,31 @@ public class Schedule implements Comparable<Schedule> {
         return this.comment;
     }
 
+    public void setScheduleDate(String scheduleDate) {
+        this.scheduleDate = scheduleDate;
+    }
+    
+    public void setTimeSlot(String timeSlot) {
+        this.timeSlot = timeSlot;
+    }
+    
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+    
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+    
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+    
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+    
+
 
     @Override
     public int compareTo(Schedule other) {

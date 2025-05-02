@@ -5,10 +5,14 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="viewSchedulePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="s25.cs151.application.controller.ScheduleEditController">
     <children>
-        <TableView fx:id="table" layoutY="54.0" prefHeight="305.0" prefWidth="600.0">
+        <TableView fx:id="table" layoutY="54.0" prefHeight="135.0" prefWidth="600.0">
             <columns>
                 <TableColumn fx:id="scheduleDate" prefWidth="100.0" sortType="DESCENDING" text="Schedule Date" />
                 <TableColumn fx:id="timeSlot" prefWidth="120.0" sortType="DESCENDING" text="Time Slot" />
@@ -23,5 +27,48 @@
       <Button layoutX="198.0" layoutY="15.0" mnemonicParsing="false" onAction="#searchName" text="Search" />
       <Button layoutX="262.0" layoutY="15.0" mnemonicParsing="false" onAction="#editSchedule" prefHeight="26.0" prefWidth="56.0" text="Edit" />
       <Button layoutX="325.0" layoutY="15.0" mnemonicParsing="false" onAction="#delete" prefHeight="26.0" prefWidth="56.0" text="Delete" />
+      <AnchorPane fx:id="editingPane" layoutX="29.0" layoutY="200.0" prefHeight="156.0" prefWidth="542.0">
+         <children>
+            <GridPane layoutX="14.0" layoutY="17.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Schedule Date" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time Slot" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Course" GridPane.rowIndex="2" />
+                  <TextField fx:id="scheduleDataField" GridPane.columnIndex="1" />
+                  <TextField fx:id="timeSlotField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="courseField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+            <GridPane layoutX="328.0" layoutY="17.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Student" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reason" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Comment" GridPane.rowIndex="2" />
+                  <TextField fx:id="studentField" GridPane.columnIndex="1" />
+                  <TextField fx:id="reasonField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="commentField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
+            <Button fx:id="finishEditing" layoutX="226.0" layoutY="116.0" mnemonicParsing="false" text="Finish Editing" onAction="#onFinishClick" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
