@@ -7,19 +7,26 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import s25.cs151.application.CommonObjects;
-import s25.cs151.application.Main;
-import s25.cs151.application.Schedule;
+import s25.cs151.application.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.Collections;
 
 public class ScheduleEditController {
+    @FXML
+    private DatePicker datePicker;
+
+    @FXML
+    private ComboBox timeSlotBox;
+
+    @FXML
+    private ComboBox courseBox;
+
     @FXML
     private AnchorPane viewSchedulePane;
 
@@ -51,25 +58,13 @@ public class ScheduleEditController {
     private TextField searchField;
 
     @FXML
-    private TextField commentField;
-
-    @FXML
-    private TextField courseField;
-
-    @FXML
-    private Button finishEditing;
+    private TextField nameField;
 
     @FXML
     private TextField reasonField;
 
     @FXML
-    private TextField scheduleDataField;
-
-    @FXML
-    private TextField studentField;
-
-    @FXML
-    private TextField timeSlotField;
+    private TextField commentField;
 
     private CommonObjects commonObject = CommonObjects.getInstance();
     // private ObservableList<Schedule> scheduleCSVList = commonObject.getScheduleCSVList();
@@ -79,7 +74,7 @@ public class ScheduleEditController {
     // List to contain the searched objects
     private ObservableList<Schedule> searchList = FXCollections.observableArrayList();
 
-    @FXML 
+    @FXML
     public void initialize(){
         editingPane.setVisible(false);
         editingPane.setAccessibleText("Please choose one schedule to edit");
@@ -92,7 +87,7 @@ public class ScheduleEditController {
     @FXML
     public void setUpColumns(ObservableList<Schedule> list) {
         // Set up columns
-        
+
         scheduleDate.setCellValueFactory(new PropertyValueFactory<>("scheduleDate"));
         timeSlot.setCellValueFactory(new PropertyValueFactory<>("timeSlot"));
         timeSlot.setStyle("-fx-font-family: monospace;-fx-font-weight: bold;");
@@ -136,7 +131,7 @@ public class ScheduleEditController {
     @FXML
     public void editSchedule(ActionEvent actionEvent) {
         Object o = table.getSelectionModel().getSelectedItem();
-        Schedule selectedSchedule = (Schedule) o; 
+        Schedule selectedSchedule = (Schedule) o;
 
         if (o == null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -152,12 +147,46 @@ public class ScheduleEditController {
         System.out.println(selectedSchedule);
 
         editingPane.setVisible(true);
-        scheduleDataField.setText(selectedSchedule.getScheduleDate());
-        timeSlotField.setText(selectedSchedule.getTimeSlot());
-        courseField.setText(selectedSchedule.getCourseName());
-        studentField.setText(selectedSchedule.getStudentName());
+
+        // Omar's Portion
+        // Setting date pickers dropdown default value
+        datePicker.setValue(LocalDate.now());
+
+        // Setting courses dropdown options
+        File file1 = new File("src/csv_files/courses.csv");
+        ObservableList<Course> courseCSVList = commonObject.getCSVList(file1);
+
+        // If not empty, we set courseBox's default value and dropdown values
+        if (!courseCSVList.isEmpty()) {
+            // Creating a list of the Course Object's names to be displayed by the dropdown
+            ObservableList<String> courseNameList = FXCollections.observableArrayList();
+            for (Course course: courseCSVList) {
+                courseNameList.add(course.getCourseCode().replace("-", "") + "-0" + course.getCourseNumber());
+            }
+            courseBox.setItems(courseNameList);
+            courseBox.setValue(courseCSVList.get(0).getCourseCode().replace("-", "")+"-0"+courseCSVList.get(0).getCourseNumber());
+            courseBox.setStyle("-fx-font-family: monospace;-fx-font-weight: bold;");
+        }
+
+        File file2 = new File("src/csv_files/time_slots.csv");
+        ObservableList<TimeSlot> timeSlotCSVList = commonObject.getCSVList(file2);
+        if (!timeSlotCSVList.isEmpty()) {
+            ObservableList<String> timeSlotNewFormatList = FXCollections.observableArrayList();
+            String format = "";
+            for (TimeSlot timeSlot: timeSlotCSVList) {
+                format = timeSlot.getFromHour() + " - " + timeSlot.getToHour();
+                timeSlotNewFormatList.add(format);
+            }
+            timeSlotBox.setItems(timeSlotNewFormatList);
+            timeSlotBox.setValue(timeSlotCSVList.get(0).getFromHour() + " - " + timeSlotCSVList.get(0).getToHour());
+            timeSlotBox.setStyle("-fx-font-family: monospace;-fx-font-weight: bold;");
+        }
+
+        // Setting the default value of the text fields
+        nameField.setText(selectedSchedule.getStudentName()); // edited
         reasonField.setText(selectedSchedule.getReason());
         commentField.setText(selectedSchedule.getComment());
+
     }
 
     /**
@@ -237,27 +266,50 @@ public class ScheduleEditController {
     }
 
     @FXML
-    public void onFinishClick(ActionEvent actionEvent) {
+    public void saveClick(ActionEvent actionEvent) {
         // Save selected schedule
         Object o = table.getSelectionModel().getSelectedItem();
         Schedule selectedSchedule = (Schedule) o;
 
         // Terminal output
-        System.out.println("Printing schedule to delete:");
+        System.out.println("Printing schedule to edit:");
         System.out.println(selectedSchedule);
 
         // Removes from both primary and helper subset list
         scheduleCSVList.remove(selectedSchedule);
         searchList.remove(selectedSchedule);
 
-        // Adding the eddited schedule
-        Schedule editedSchedule = new Schedule(studentField.getText(), scheduleDataField.getText(), 
-        timeSlotField.getText(), courseField.getText(), reasonField.getText(), commentField.getText());
+        // Adding the edited schedule
+        String studentName = nameField.getText();
+        LocalDate date = datePicker.getValue(); // Returns a LocalDate Object
+        String timeSlot = (String) timeSlotBox.getValue();
+        String course = (String) courseBox.getValue();
+        String reason = reasonField.getText();
+        String comment = commentField.getText();
+
+        // Ensures a name is provided
+        if (studentName.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Provide a student name.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Ensures no cell entry is left empty
+        if (reason.isEmpty()) {
+            reason = "None.";
+        }
+        if (comment.isEmpty()) {
+            comment = "None";
+        }
+        Schedule editedSchedule = new Schedule(studentName, date + "", timeSlot,
+                course, reason, comment);
 
         if(!scheduleCSVList.contains(editedSchedule)) {
             scheduleCSVList.add(editedSchedule);
         }
-        System.out.println(scheduleDataField.getText()); 
         // Updates the contents of schedule.csv to exclude the deleted appointment
         updateScheduleCSVFile();
         // Resets the searchList
@@ -267,6 +319,5 @@ public class ScheduleEditController {
         searchName();
         editingPane.setVisible(false);
     }
-
     
 }
