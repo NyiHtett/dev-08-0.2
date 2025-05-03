@@ -69,6 +69,8 @@ public class ScheduleEditController {
     private CommonObjects commonObject = CommonObjects.getInstance();
     // private ObservableList<Schedule> scheduleCSVList = commonObject.getScheduleCSVList();
     File file = new File("src/csv_files/schedule.csv");
+
+    // Primary list representative of schedule.csv. Will be used to update csv.
     private ObservableList<Schedule> scheduleCSVList = commonObject.getCSVList(file);
 
     // List to contain the searched objects
@@ -104,6 +106,7 @@ public class ScheduleEditController {
      */
     @FXML
     void searchName() {
+        // Resets the search list
         searchList.clear();
 
         // Creating subset of "scheduleCSVList" called "searchList" by name.
@@ -148,7 +151,6 @@ public class ScheduleEditController {
 
         editingPane.setVisible(true);
 
-        // Omar's Portion
         // Setting date pickers dropdown default value
         datePicker.setValue(LocalDate.now());
 
@@ -223,8 +225,7 @@ public class ScheduleEditController {
 
         // Updates the contents of schedule.csv to exclude the deleted appointment
         updateScheduleCSVFile();
-        // Resets the searchList
-        searchList.clear();
+
         // Restarts the search using the previously given name to display an
         // updated version of searchList.
         searchName();
@@ -304,20 +305,23 @@ public class ScheduleEditController {
         if (comment.isEmpty()) {
             comment = "None";
         }
+
+        // Instantiating Schedule object and checking for duplicate
         Schedule editedSchedule = new Schedule(studentName, date + "", timeSlot,
                 course, reason, comment);
-
         if(!scheduleCSVList.contains(editedSchedule)) {
             scheduleCSVList.add(editedSchedule);
+            Collections.sort(scheduleCSVList);
         }
+
         // Updates the contents of schedule.csv to exclude the deleted appointment
+        // or replace updated appointments
         updateScheduleCSVFile();
-        // Resets the searchList
-        searchList.clear();
+
         // Restarts the search using the previously given name to display an
         // updated version of searchList.
         searchName();
         editingPane.setVisible(false);
     }
-    
+
 }
