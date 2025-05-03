@@ -81,6 +81,7 @@ public class ScheduleSearchController {
      */
     @FXML
     void searchName() {
+        // Resets the search list
         searchList.clear();
 
         // Creating subset of "scheduleCSVList" called "searchList" by name.
@@ -139,8 +140,7 @@ public class ScheduleSearchController {
 
         // Updates the contents of schedule.csv to exclude the deleted appointment
         updateScheduleCSVFile();
-        // Resets the searchList
-        searchList.clear();
+
         // Restarts the search using the previously given name to display an
         // updated version of searchList.
         searchName();
