@@ -39,7 +39,7 @@ public class CommonObjects {
     /**
      * Reads a CSV file and returns a ObservableList of objects determined by the file.
      * @param file the CSV file to read from.
-     * @return
+     * @return an ObservableList object
      */
     public ObservableList getCSVList(File file) {
         try {
@@ -65,14 +65,17 @@ public class CommonObjects {
                     Schedule s = new Schedule(elements[0],elements[1], elements[2],
                             elements[3], elements[4], elements[5]);
                     CSVList.add(s);
+                } else {
+                    throw new Exception("Invalid file provided");
                 }
             }
             Collections.sort(CSVList);
             return CSVList;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
-
 }
