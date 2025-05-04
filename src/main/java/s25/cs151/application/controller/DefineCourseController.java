@@ -37,7 +37,7 @@ public class DefineCourseController {
     void onFinalSubmit(ActionEvent event) {
         saveCourse();
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/home-page.fxml"));
             Pane pane = fxmlLoader.load();
             coursePane.getChildren().clear();
             coursePane.getChildren().add(pane);
@@ -49,7 +49,7 @@ public class DefineCourseController {
     @FXML
     protected void onPreviousButton(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/home-page.fxml"));
             Pane pane = fxmlLoader.load();
             coursePane.getChildren().clear();
             coursePane.getChildren().add(pane);

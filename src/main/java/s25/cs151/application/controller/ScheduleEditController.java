@@ -10,6 +10,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import s25.cs151.application.*;
+import s25.cs151.application.model.CommonObjects;
+import s25.cs151.application.model.Course;
+import s25.cs151.application.model.Schedule;
+import s25.cs151.application.model.TimeSlot;
 
 import java.io.File;
 import java.io.IOException;
@@ -80,6 +84,7 @@ public class ScheduleEditController {
     public void initialize(){
         editingPane.setVisible(false);
         editingPane.setAccessibleText("Please choose one schedule to edit");
+        setUpColumns(scheduleCSVList);
     }
 
     /**
@@ -151,8 +156,8 @@ public class ScheduleEditController {
 
         editingPane.setVisible(true);
 
-        // Setting date pickers dropdown default value
-        datePicker.setValue(LocalDate.now());
+        // Setting date picker to the selected schedule's date
+        datePicker.setValue(LocalDate.parse(selectedSchedule.getScheduleDate()));
 
         // Setting courses dropdown options
         File file1 = new File("src/csv_files/courses.csv");
@@ -166,7 +171,8 @@ public class ScheduleEditController {
                 courseNameList.add(course.getCourseCode().replace("-", "") + "-0" + course.getCourseNumber());
             }
             courseBox.setItems(courseNameList);
-            courseBox.setValue(courseCSVList.get(0).getCourseCode().replace("-", "")+"-0"+courseCSVList.get(0).getCourseNumber());
+            // Set the course box to the selected schedule's course
+            courseBox.setValue(selectedSchedule.getCourseName());
             courseBox.setStyle("-fx-font-family: monospace;-fx-font-weight: bold;");
         }
 
@@ -180,15 +186,15 @@ public class ScheduleEditController {
                 timeSlotNewFormatList.add(format);
             }
             timeSlotBox.setItems(timeSlotNewFormatList);
-            timeSlotBox.setValue(timeSlotCSVList.get(0).getFromHour() + " - " + timeSlotCSVList.get(0).getToHour());
+            // Set the time slot box to the selected schedule's time slot
+            timeSlotBox.setValue(selectedSchedule.getTimeSlot());
             timeSlotBox.setStyle("-fx-font-family: monospace;-fx-font-weight: bold;");
         }
 
         // Setting the default value of the text fields
-        nameField.setText(selectedSchedule.getStudentName()); // edited
+        nameField.setText(selectedSchedule.getStudentName());
         reasonField.setText(selectedSchedule.getReason());
         commentField.setText(selectedSchedule.getComment());
-
     }
 
     /**
@@ -255,7 +261,7 @@ public class ScheduleEditController {
     @FXML
     public void onExitClick(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/home-page.fxml"));
             Pane pane = fxmlLoader.load();
 
             viewSchedulePane.getChildren().clear();

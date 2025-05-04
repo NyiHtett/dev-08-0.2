@@ -9,6 +9,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import s25.cs151.application.*;
+import s25.cs151.application.model.CommonObjects;
+import s25.cs151.application.model.Course;
+import s25.cs151.application.model.TimeSlot;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -136,7 +139,7 @@ public class DefineScheduleController {
         }
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/home-page.fxml"));
             Pane pane = fxmlLoader.load();
 
             schedulePane.getChildren().clear();
@@ -150,7 +153,7 @@ public class DefineScheduleController {
     @FXML
     public void onCancelClick(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/home-page.fxml"));
             Pane pane = fxmlLoader.load();
 
             schedulePane.getChildren().clear();

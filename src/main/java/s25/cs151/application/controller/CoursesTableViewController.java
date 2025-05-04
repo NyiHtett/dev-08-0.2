@@ -8,8 +8,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import s25.cs151.application.CommonObjects;
-import s25.cs151.application.Course;
+import s25.cs151.application.model.CommonObjects;
+import s25.cs151.application.model.Course;
 import s25.cs151.application.Main;
 
 import java.io.File;
@@ -50,7 +50,7 @@ public class CoursesTableViewController {
     @FXML
     protected void onExitClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/home-page.fxml"));
             Pane pane = fxmlLoader.load();
 
             coursesPane.getChildren().clear();

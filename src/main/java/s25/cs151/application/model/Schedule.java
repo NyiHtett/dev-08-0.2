@@ -1,4 +1,4 @@
-package s25.cs151.application;
+package s25.cs151.application.model;
 
 public class Schedule implements Comparable<Schedule> {
     private String studentName;

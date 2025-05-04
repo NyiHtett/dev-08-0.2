@@ -54,7 +54,7 @@ public class DefineTimeSlotsController {
     protected void onCoursePageClick() {
         this.saveTimeSlot();
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/home-page.fxml"));
             Pane pane = fxmlLoader.load();
             timeSlotPane.getChildren().clear();
             timeSlotPane.getChildren().add(pane);
@@ -66,7 +66,7 @@ public class DefineTimeSlotsController {
     @FXML
     protected void onPreviousPageClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/home-page.fxml"));
             Pane pane = fxmlLoader.load();
             timeSlotPane.getChildren().clear();
             timeSlotPane.getChildren().add(pane);

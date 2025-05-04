@@ -8,9 +8,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.AnchorPane;
-import s25.cs151.application.CommonObjects;
+import s25.cs151.application.model.CommonObjects;
 import s25.cs151.application.Main;
-import s25.cs151.application.TermWeekday;
+import s25.cs151.application.model.TermWeekday;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,7 +50,7 @@ public class TableViewController {
     @FXML
     protected void onExitClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/home-page.fxml"));
             Pane pane = fxmlLoader.load();
 
             officeHourPane.getChildren().clear();

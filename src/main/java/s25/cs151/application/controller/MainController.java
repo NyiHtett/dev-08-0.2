@@ -19,7 +19,7 @@ public class MainController {
     @FXML
     protected void onDefineOfficeHoursClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("define-office-hours.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/define-office-hours.fxml"));
             Pane pane = fxmlLoader.load();
 
             mainPane.getChildren().clear();
@@ -34,7 +34,7 @@ public class MainController {
     @FXML
     protected void onViewOfficeHoursClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-office-hours.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/view-office-hours.fxml"));
             Pane pane = fxmlLoader.load();
 
             mainPane.getChildren().clear();
@@ -48,7 +48,7 @@ public class MainController {
     @FXML
     void onDefineTimeSlotsClick(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("define-time-slots.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/define-time-slots.fxml"));
             Pane pane = fxmlLoader.load();
 
             mainPane.getChildren().clear();
@@ -62,7 +62,7 @@ public class MainController {
     @FXML
     void onViewTimeSlotsClick(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-semester-time-slots.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/view-semester-time-slots.fxml"));
             Pane pane = fxmlLoader.load();
 
             mainPane.getChildren().clear();
@@ -76,7 +76,7 @@ public class MainController {
     @FXML
     void onDefineCoursesClick(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("course.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/course.fxml"));
             Pane pane = fxmlLoader.load();
 
             mainPane.getChildren().clear();
@@ -90,7 +90,7 @@ public class MainController {
     @FXML
     void onViewCoursesClick(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-courses.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/view-courses.fxml"));
             Pane pane = fxmlLoader.load();
 
             mainPane.getChildren().clear();
@@ -104,7 +104,7 @@ public class MainController {
     @FXML
     public void onDefineScheduleClick(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("define-schedule.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/define-schedule.fxml"));
             Pane pane = fxmlLoader.load();
 
             mainPane.getChildren().clear();
@@ -118,7 +118,7 @@ public class MainController {
     @FXML
     public void onViewScheduleClick(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view-schedule.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/view-schedule.fxml"));
             Pane pane = fxmlLoader.load();
 
             mainPane.getChildren().clear();
@@ -132,7 +132,7 @@ public class MainController {
     @FXML
     public void onSearchScheduleClick(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("search-schedule.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/search-schedule.fxml"));
             Pane pane = fxmlLoader.load();
 
             mainPane.getChildren().clear();
@@ -146,7 +146,7 @@ public class MainController {
     @FXML
     public void onSearchEditClick(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("edit-schedule.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/edit-schedule.fxml"));
             Pane pane = fxmlLoader.load();
 
             mainPane.getChildren().clear();

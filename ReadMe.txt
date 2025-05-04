@@ -1,5 +1,31 @@
 # Name of application: OfficeTracker
 
+# Version: 0.8
+
+# Who did what:
+1. Daniel Nguyen: MVC, Submission
+2. Omar Adrianne Bapora: Incorporate polymorphism, improve edit functionality
+3. Joshua Lai: Edge cases / errors for edit page
+4. Nyi Htet: Edit page, UI and logic
+
+# Any other instructions that users need to know:
+Polymorphism criteria:
+Location: CommonObjects.java
+Parent interface: Comparable
+Concrete child classes: TermWeekday, Course, TimeSlot, Schedule
+
+Previous Versions:
+
+# Version: 0.7
+
+# Who did what:
+1. Daniel Nguyen: Submission
+2. Omar Adrianne Bapora: Implement delete and improve search functionality
+3. Joshua Lai: Improve search functionality, search output
+4. Nyi Htet: Search page, initiate search functionality
+
+# Any other instructions that users need to know:
+
 # Version: 0.6
 
 # Who did what:
@@ -7,8 +33,6 @@
 2. Omar Adrianne Bapora: Code redesign, home/define/view pages, save to CSV, table-view sorting and output
 3. Joshua Lai: Error handling for schedule submissions
 4. Nyi Htet: Data formatting and styling
-
-Previous Versions:
 
 # Any other instructions that users need to know:
 

@@ -9,9 +9,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import s25.cs151.application.CommonObjects;
+import s25.cs151.application.model.CommonObjects;
 import s25.cs151.application.Main;
-import s25.cs151.application.Schedule;
+import s25.cs151.application.model.Schedule;
 
 import java.io.File;
 import java.io.IOException;
@@ -66,7 +66,7 @@ public class ScheduleViewController {
     @FXML
     public void onExitClick(ActionEvent actionEvent) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/home-page.fxml"));
             Pane pane = fxmlLoader.load();
 
             viewSchedulePane.getChildren().clear();

@@ -108,7 +108,7 @@ public class DefineController  {
     @FXML
     protected void onCancelClick() {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/home-page.fxml"));
             Pane pane = fxmlLoader.load();
 
             definePane.getChildren().clear();
@@ -182,7 +182,7 @@ public class DefineController  {
         saveDataToCSV(semester, year, days);
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("home-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("view/home-page.fxml"));
             Pane pane = fxmlLoader.load();
 
             definePane.getChildren().clear();
